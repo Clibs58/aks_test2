@@ -1,0 +1,260 @@
+🎨 1. Color System (Premium Black × White × Metallic Blue)
+
+Paste this into your Figma Style Guide → Colors page.
+
+Primary Colors
+
+Black: #0A0A0A
+
+White: #FFFFFF
+
+Metallic Blue Palette (Choose 1 as primary accent)
+
+Primary Metallic Blue: #0D1B2A
+
+Steel Blue: #1B263B
+
+Soft Blue Accent: #415A77
+
+Passive Grey-Blue: #778DA9
+
+Gradients (for highlights or hero backgrounds)
+
+Premium Blue Gradient:
+linear-gradient(135deg, #0D1B2A 0%, #1B263B 50%, #415A77 100%)
+
+📏 2. Spacing System (8px Grid Default)
+
+Your web layout should use:
+
+8px base unit
+
+Spacing options:
+4 — 8 — 16 — 24 — 32 — 48 — 64 — 96 — 128
+
+Usage examples:
+
+Section padding: 96px top / 96px bottom
+
+Component spacing: 24–32px
+
+Hero spacing: 128–160px
+
+🔤 3. Typography Scale
+
+Use large, premium, bold fonts.
+
+Recommended Font Pair:
+
+Heading: Inter / SF Pro Display / Poppins (SemiBold & Bold)
+
+Body: Inter / Poppins Regular
+
+Paste this scale into your Figma text styles:
+
+Display (Hero): 64–72px / Bold  
+H1: 48px / SemiBold  
+H2: 36px / SemiBold  
+H3: 28px / Medium  
+H4: 22px / Medium  
+Body Large: 18px / Regular  
+Body: 16px / Regular  
+Caption: 14px / Regular  
+
+🧱 4. Components Library (Figma-ready spec)
+Buttons
+Primary Button
+
+Fill: Metallic Blue (#1B263B)
+
+Radius: 8px
+
+Padding: 16px 28px
+
+Text: 16–18px SemiBold
+
+Hover: lighten + subtle glow
+
+Animation: 0.25s ease-out
+
+Secondary Button (Outline)
+
+Stroke: #415A77 (1.5px)
+
+Hover: Slight blue fill (5% opacity)
+
+Cards
+
+Padding: 32px
+
+Radius: 12px
+
+Background: #0D1B2A with 4–6% noise grain
+
+Stroke: 1px rgba(255,255,255,0.08)
+
+Shadow: subtle ambient
+
+Hover animation:
+
+Lift: 8–12px
+
+Shadow increases
+
+Cursor pointer
+
+Navbar
+
+Height: 80px (shrinks to 64px on scroll)
+
+Background: black (90% opacity)
+
+Shadow: subtle bottom shadow
+
+Animation: fade-in from opacity 0 → 100 in 0.5s
+
+🧩 5. Full Section-by-Section Layout Specs (Use directly in Figma)
+HERO SECTION
+
+Frame height: 680–760px
+Layout: Center, max width 1200px
+
+Elements:
+
+Hero text:
+
+Tagline: 64–72px bold
+
+Subline: 20–24px
+
+Metallic blue abstract background
+
+Two CTAs (primary + outline)
+
+Animations to apply:
+
+Headline: slide-up + fade (duration 0.6s)
+
+Subline: fade 0.7s
+
+Buttons: staggered By 0.15s
+
+Background line-art: slow loop morph (opacity 40%)
+
+CLIENT LOGOS
+
+Grid: 6–8 logos
+Spacing: 32px between items
+Opacity: default 55% → hover 100%
+
+Animation: fade-in row by row
+
+OUR PROCESS (Roadmap)
+
+4-step horizontal timeline
+
+Spacing:
+
+Each step card: 260–300px wide
+
+Line in between: 40px stroke
+
+Animations:
+
+Step 1 appears
+
+Then step 2
+
+Then step 3
+
+Then step 4 (stagger 0.25s)
+
+Line animates from left to right
+
+CASE STUDIES
+
+Card Layout:
+
+Left: Title (H3)
+
+Center: Short description
+
+Right: KPI impact
+
+Card Size:
+
+Width: 100%
+
+Height: 260–300px
+
+Hover animation:
+
+Lift + glowing blue border
+
+Smooth transition 0.3s
+
+JOIN US (Internships)
+
+Minimal section
+
+Blue glowing underline animation on hover
+
+CTA opens Google Form
+
+CONTACT SECTION
+
+Full width
+
+Dark background
+
+Large text
+
+Blue pulse gradient behind
+
+📐 6. Auto-Layout Structure (Figma-friendly)
+Use Auto-Layout on EVERYTHING:
+
+Hero container: vertical auto layout
+
+Button rows: horizontal auto layout
+
+Card lists: vertical auto layout
+
+Navbar: horizontal auto layout
+
+Footer links: wrap auto-layout
+
+Spacing rules remain consistent (24/32/48).
+
+⚡ 7. Animation Guideline (Paste into prototype tab)
+Page Load:
+
+Fade in hero (0.6s)
+
+Slide-up text (0.5s)
+
+Buttons pop (0.2s)
+
+Scroll Animations:
+
+Bottom→up fade
+
+Blue highlights glow when in viewport
+
+Case study cards animate on scroll
+
+Hover Animations:
+
+Buttons ripple or glow
+
+Cards lift
+
+Links underline slide
+
+📦 8. Export This as a Figma Component System
+Pages in Figma:
+01 – Style Guide  
+02 – Components  
+03 – Layout  
+04 – Landing Page  
+05 – Interactions & Prototypes
