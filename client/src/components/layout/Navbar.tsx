@@ -32,7 +32,7 @@ export function Navbar() {
           <img 
             src="public/aks_logo_website.svg" 
             alt="Logo" 
-            className="h-16 w-auto"
+            className="h-20 w-auto"
           />
         </Link>
 
