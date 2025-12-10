@@ -30,7 +30,7 @@ export function Navbar() {
       <div className="container mx-auto h-full px-6 flex items-center justify-between">
         <Link href="/" className="cursor-pointer">
           <img 
-            src="client/src/components/layout/logo.png" 
+            src="public/logo.png" 
             alt="Logo" 
             className="h-10 w-auto"
           />
