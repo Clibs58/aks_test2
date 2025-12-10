@@ -28,9 +28,14 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto h-full px-6 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold font-heading tracking-tight text-white cursor-pointer">
-            NOVA<span className="text-accent">.</span>
-        </Link>
+        <Link href="/" className="cursor-pointer">
+  <img 
+    src="client/src/components/layout/aks_logo_website.svg" 
+    alt="Logo" 
+    className="h-10 w-auto"
+  />
+</Link>
+
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
