@@ -7,7 +7,7 @@ export function Footer() {
             <img 
               src="/aks_logo_website.svg" 
               alt="Logo" 
-              className="h-12 w-auto mb-4"
+              className="h-32 w-auto mb-4"
             />
 
             <p className="text-gray-400 max-w-sm">
