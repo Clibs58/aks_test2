@@ -39,7 +39,7 @@ export function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {["Work", "Process", "About", "Contact"].map((item) => (
+          {["Process", "Work", "About", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
