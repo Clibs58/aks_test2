@@ -4,9 +4,12 @@ export function Footer() {
       <div className="container px-6 mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-2">
-            <h3 className="text-2xl font-bold font-heading tracking-tight text-white mb-4">
-              NOVA<span className="text-accent">.</span>
-            </h3>
+            <img 
+              src="/aks_logo_website.svg" 
+              alt="Logo" 
+              className="h-12 w-auto mb-4"
+            />
+
             <p className="text-gray-400 max-w-sm">
               Premium digital product studio crafting experiences for the modern web.
             </p>
