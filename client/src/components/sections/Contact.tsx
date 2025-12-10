@@ -34,7 +34,27 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl"
           >
-           
+           <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">Name</label>
+                  <Input className="bg-white/5 border-white/10 focus:border-accent text-white h-12" placeholder="John Doe" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">Email</label>
+                  <Input className="bg-white/5 border-white/10 focus:border-accent text-white h-12" placeholder="john@example.com" />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">Message</label>
+                <Textarea className="bg-white/5 border-white/10 focus:border-accent text-white min-h-[150px]" placeholder="Tell us about your project..." />
+              </div>
+
+              <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg font-medium shadow-lg shadow-primary/20">
+                Send Message
+              </Button>
+            </form>
           </motion.div>
         </div>
       </div>
