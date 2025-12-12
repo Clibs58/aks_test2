@@ -22,7 +22,7 @@ const cases = [
   {
     title: "Global Connect",
     category: "Enterprise SaaS",
-    kpi: "2M+ Active Users",
+    kpi: "2B+ Active Users",
     image: cs3,
   },
 ];
