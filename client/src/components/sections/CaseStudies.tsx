@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
 import cs1 from "@assets/generated_images/modern_office_architecture_for_case_study.png";
 import cs2 from "@assets/generated_images/futuristic_data_center_for_case_study.png";
 import cs3 from "@assets/generated_images/team_collaboration_for_case_study.png";
@@ -31,17 +30,18 @@ export function CaseStudies() {
   return (
     <section id="work" className="py-32 bg-black/30">
       <div className="container px-6 mx-auto">
+        {/* Title Row */}
         <div className="flex items-end justify-between mb-16">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Selected Work</h2>
             <p className="text-gray-400">Impactful results for global brands.</p>
           </div>
-
           <button className="hidden md:flex items-center gap-2 text-accent hover:text-white transition-colors">
             View All Projects <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
 
+        {/* Horizontal Cards */}
         <div className="flex flex-col gap-12">
           {cases.map((project, i) => (
             <motion.div
@@ -53,9 +53,11 @@ export function CaseStudies() {
             >
               <Card className="group overflow-hidden border-white/5 bg-card hover:border-accent/50 transition-all duration-500">
                 <CardContent className="p-0">
-                  <div className="grid md:grid-cols-2 gap-0 h-full min-h-[300px] md:min-h-[400px]">
-                    {/* Text Section */}
-                    <div className="p-8 md:p-12 flex flex-col justify-center relative order-2 md:order-1">
+                  {/* Horizontal Layout */}
+                  <div className="flex flex-row h-full min-h-[300px] md:min-h-[400px]">
+
+                    {/* LEFT TEXT SIDE */}
+                    <div className="p-8 md:p-12 w-1/2 flex flex-col justify-center relative">
                       <div className="absolute top-0 left-0 w-1 h-0 bg-accent group-hover:h-full transition-all duration-500 ease-in-out" />
 
                       <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4">
@@ -79,16 +81,16 @@ export function CaseStudies() {
                       </div>
                     </div>
 
-                    {/* Image Section */}
-                    <div className="relative h-64 md:h-full overflow-hidden order-1 md:order-2">
+                    {/* RIGHT IMAGE SIDE */}
+                    <div className="relative w-1/2 h-64 md:h-full overflow-hidden">
                       <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
+
                   </div>
                 </CardContent>
               </Card>
@@ -96,6 +98,7 @@ export function CaseStudies() {
           ))}
         </div>
 
+        {/* Mobile Button */}
         <div className="mt-12 md:hidden text-center">
           <button className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors">
             View All Projects <ArrowUpRight className="w-4 h-4" />
