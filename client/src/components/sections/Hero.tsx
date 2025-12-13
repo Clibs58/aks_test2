@@ -24,7 +24,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-[1.1] tracking-tight mb-6"
         >
-          Turning Student Ideas <br />
+        Turning Student Ideas <br />
           <span className="text-gradient-blue">into Real Products</span>
         </motion.h1>
 
