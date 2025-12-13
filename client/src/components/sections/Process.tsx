@@ -19,7 +19,7 @@ const steps = [
   {
     num: "04",
     title: "Deploy",
-    desc: "We support launch and early feedback — validating outcomes, learning from real usage, and refining the roadmap ahead. This phase is about momentum, not completion.",
+    desc: "Building robust, scalable, and performant solutions.",
   },
 ];
 
