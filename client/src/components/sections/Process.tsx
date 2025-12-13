@@ -4,7 +4,7 @@ const steps = [
   {
     num: "01",
     title: "Discover",
-    desc: "We dive deep into your brand goals and user needs.",
+    desc: "We start by deeply understanding the startup’s context — users, market, constraints, assumptions, and goals. This phase is about clarity, not solutions.",
   },
   {
     num: "02",
