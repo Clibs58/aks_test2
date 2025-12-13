@@ -34,9 +34,7 @@ export function Process() {
           className="mb-20 max-w-2xl"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Process</h2>
-          <p className="text-gray-400 text-lg">
-            A streamlined approach to delivering excellence, from concept to launch.
-          </p>
+          
         </motion.div>
 
         <div className="relative">
