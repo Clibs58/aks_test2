@@ -14,12 +14,12 @@ const steps = [
   {
     num: "03",
     title: "Design",
-    desc: "Visualizing the future with high-fidelity prototypes.",
+    desc: "We align teams around execution — structuring the work, planning iterations, and ensuring every effort ties back to the product strategy. This phase is about building with intent, not activity.",
   },
   {
     num: "04",
     title: "Development",
-    desc: "Building robust, scalable, and performant solutions.",
+    desc: "We support launch and early feedback — validating outcomes, learning from real usage, and refining the roadmap ahead. This phase is about momentum, not completion.",
   },
 ];
 
