@@ -39,7 +39,7 @@ export function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {["Process", "Work", "About", "Contact"].map((item) => (
+          {["Home", "About Us", "Portfolio", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -51,7 +51,7 @@ export function Navbar() {
           <Button 
             className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium shadow-[0_0_15px_rgba(27,38,59,0.5)] hover:shadow-[0_0_25px_rgba(65,90,119,0.6)] transition-all duration-300 cursor-pointer"
           >
-            Let's Talk
+            Join Us
           </Button>
         </div>
 
