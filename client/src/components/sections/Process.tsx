@@ -8,18 +8,18 @@ const steps = [
   },
   {
     num: "02",
-    title: "Strategy",
-    desc: "Crafting a roadmap for digital transformation.",
+    title: "Define",
+    desc: "We translate insights from discovery into clear product direction — defining what should be built, what should be prioritized, and what success looks like. This phase is about decision-making, not guessing.",
   },
   {
     num: "03",
-    title: "Design",
-    desc: "Visualizing the future with high-fidelity prototypes.",
+    title: "Develop"",
+    desc: "We align teams around execution — structuring the work, planning iterations, and ensuring every effort ties back to the product strategy. This phase is about building with intent, not activity.",
   },
   {
     num: "04",
-    title: "Development",
-    desc: "Building robust, scalable, and performant solutions.",
+    title: "Deploy",
+    desc: "We support launch and early feedback — validating outcomes, learning from real usage, and refining the roadmap ahead. This phase is about momentum, not completion.",
   },
 ];
 
