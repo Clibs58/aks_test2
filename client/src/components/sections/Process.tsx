@@ -4,22 +4,22 @@ const steps = [
   {
     num: "01",
     title: "Discover",
-    desc: "We start by deeply understanding the startup’s context — users, market, constraints, assumptions, and goals. This phase is about clarity, not solutions.",
+    desc: "In depth insights into market, constraints, assumptions and goals owing to crystal clear clarity",
   },
   {
     num: "02",
     title: "Define",
-    desc: "We translate insights from discovery into clear product direction — defining what should be built, what should be prioritized, and what success looks like. This phase is about decision-making, not guessing.",
+    desc: "Translating insights into clear product direction, thus defining what should be built and prioritised",
   },
   {
     num: "03",
     title: "Develop",
-    desc: "We align teams around execution — structuring the work, planning iterations, and ensuring every effort ties back to the product strategy. This phase is about building with intent, not activity.",
+    desc: "Aligning teams around execution by structuring work,planning iterations and ensuring execution of product strategy",
   },
   {
     num: "04",
     title: "Deploy",
-    desc: "We support launch and early feedback — validating outcomes, learning from real usage, and refining the roadmap ahead. This phase is about momentum, not completion.",
+    desc: "Ensuring successful launch of product with consequent and swift action on costumer feedbacks",
   },
 ];
 
