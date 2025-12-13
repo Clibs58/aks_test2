@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+/*import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -33,7 +33,7 @@ export function CaseStudies() {
       <div className="container px-6 mx-auto">
         
         {/* Heading */}
-        <div className="flex items-end justify-between mb-16">
+    /*    <div className="flex items-end justify-between mb-16">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Selected Work</h2>
             <p className="text-gray-400">Impactful results for global brands.</p>
@@ -45,7 +45,7 @@ export function CaseStudies() {
         </div>
 
         {/* HORIZONTAL CARDS */}
-        <div className="flex flex-col gap-12">
+ /*       <div className="flex flex-col gap-12">
           {cases.map((project, i) => (
             <motion.div
               key={i}
@@ -58,10 +58,10 @@ export function CaseStudies() {
                 <CardContent className="p-0">
 
                   {/* HORIZONTAL FLEX */}
-                  <div className="flex flex-col md:flex-row w-full min-h-[300px] md:min-h-[400px]">
+/*                  <div className="flex flex-col md:flex-row w-full min-h-[300px] md:min-h-[400px]">
                     
                     {/* LEFT TEXT */}
-                    <div className="p-8 md:p-12 w-full md:w-1/2 flex flex-col justify-center relative">
+ /*                   <div className="p-8 md:p-12 w-full md:w-1/2 flex flex-col justify-center relative">
                       <div className="absolute top-0 left-0 w-1 h-0 bg-accent group-hover:h-full transition-all duration-500" />
 
                       <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4">
@@ -86,7 +86,7 @@ export function CaseStudies() {
                     </div>
 
                     {/* RIGHT IMAGE */}
-                    <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden">
+ /*                   <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden">
                       <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
 
                       <img
@@ -104,7 +104,7 @@ export function CaseStudies() {
         </div>
 
         {/* Mobile Button */}
-        <div className="mt-12 md:hidden text-center">
+ /*       <div className="mt-12 md:hidden text-center">
           <button className="inline-flex items-center gap-2 text-accent hover:text-white transition-colors">
             View All Projects <ArrowUpRight className="w-4 h-4" />
           </button>
@@ -113,4 +113,4 @@ export function CaseStudies() {
       </div>
     </section>
   );
-}
+}*/
