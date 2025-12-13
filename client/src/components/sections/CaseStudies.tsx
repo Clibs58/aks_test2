@@ -1,8 +1,8 @@
-/*import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-import cs1 from "@assets/generated_images/modern_office_architecture_for_case_study.png";
+/*import cs1 from "@assets/generated_images/modern_office_architecture_for_case_study.png";
 import cs2 from "@assets/generated_images/futuristic_data_center_for_case_study.png";
 import cs3 from "@assets/generated_images/team_collaboration_for_case_study.png";
 
