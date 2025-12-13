@@ -9,7 +9,7 @@ const steps = [
   {
     num: "02",
     title: "Define",
-    desc: "Crafting a roadmap for digital transformation.",
+    desc: "We translate insights from discovery into clear product direction — defining what should be built, what should be prioritized, and what success looks like. This phase is about decision-making, not guessing.",
   },
   {
     num: "03",
