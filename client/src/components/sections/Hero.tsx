@@ -24,8 +24,8 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-[1.1] tracking-tight mb-6"
         >
-          Future-Ready <br />
-          <span className="text-gradient-blue">Digital Experiences</span>
+          Turning Student Ideas <br />
+          <span className="text-gradient-blue">into Real Products</span>
         </motion.h1>
 
         <motion.p
@@ -34,8 +34,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          We craft premium interfaces for forward-thinking brands.
-          Elevate your digital presence with precision engineering and aesthetic mastery.
+          A product ecosystem built for early-stage founders.
         </motion.p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
