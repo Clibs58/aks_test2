@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const steps = [
   {
     num: "01",
-    title: "Discovery",
+    title: "Discover",
     desc: "We dive deep into your brand goals and user needs.",
   },
   {
