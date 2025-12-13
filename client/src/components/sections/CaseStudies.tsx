@@ -27,7 +27,7 @@ const cases = [
   },
 ];
 
-/*export function CaseStudies() {
+export function CaseStudies() {
   return (
     <section id="work" className="py-32 bg-black/30">
       <div className="container px-6 mx-auto">
