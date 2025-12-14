@@ -62,7 +62,7 @@ export function Process() {
               >
                 
                 
-                <span className="text-6xl font-bold text-accent/20 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none">
+                <span className="text-6xl font-bold text-accent/30 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none">
                   {step.num}
                 </span>
                 
