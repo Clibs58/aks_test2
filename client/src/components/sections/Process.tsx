@@ -75,7 +75,7 @@ export function Process() {
 
                 {/* Content */}
                 <div className="relative z-10 group">
-                  <h3 className="text-2xl font-semibold mb-4 text-white transition-colors duration-300 group-hover:text-accent">
+                  <h3 className="text-2xl font-semibold mb-4 text-white underline-offset-4 transition-all duration-300 group-hover:underline">
                     {step.title}
                   </h3>
                   <p className="text-gray-400 leading-relaxed text-sm md:text-base">
