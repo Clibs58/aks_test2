@@ -60,9 +60,9 @@ export function Process() {
                 transition={{ delay: i * 0.2, duration: 0.5 }}
                 className="relative pt-4 md:pt-12"
               >
-                <div className="hidden md:block absolute top-10 left-0 w-4 h-4 bg-black border-2 border-accent rounded-full -translate-y-1/2" />
                 
-                <span className="text-6xl font-bold text-white/20 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none">
+                
+                <span className="text-6xl font-bold text-accent/20 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none">
                   {step.num}
                 </span>
                 
