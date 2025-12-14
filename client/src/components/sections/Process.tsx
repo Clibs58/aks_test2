@@ -27,6 +27,8 @@ export function Process() {
   return (
     <section id="process" className="py-32 relative overflow-hidden">
       <div className="container px-6 mx-auto">
+
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +44,7 @@ export function Process() {
         <div className="relative">
           {/* Connecting Line */}
           <div className="hidden md:block absolute top-12 left-0 right-0 h-[1px] bg-white/10 w-full -z-10" />
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0, originX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -50,24 +52,32 @@ export function Process() {
             className="hidden md:block absolute top-12 left-0 right-0 h-[1px] bg-accent w-full -z-10"
           />
 
+          {/* Steps */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {steps.map((step, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.5 }}
-                className="relative pt-4 md:pt-12"
+                transition={{ delay: i * 0.2, duration: 0.4, ease: "easeOut" }}
+                className="relative pt-4 md:pt-12 cursor-default transition-shadow duration-300 hover:drop-shadow-[0_0_24px_hsl(var(--accent)/0.15)]"
               >
-                
-                
-                <span className="text-6xl font-bold text-accent/30 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none">
+                {/* Accent Number */}
+                <motion.span
+                  className="text-6xl font-bold text-accent/30 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none"
+                  whileHover={{ opacity: 0.5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {step.num}
-                </span>
-                
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-semibold mb-4 text-white">{step.title}</h3>
+                </motion.span>
+
+                {/* Content */}
+                <div className="relative z-10 group">
+                  <h3 className="text-2xl font-semibold mb-4 text-white transition-colors duration-300 group-hover:text-accent">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                     {step.desc}
                   </p>
