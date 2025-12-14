@@ -47,23 +47,11 @@ export function Hero() {
               size="lg"
               className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white rounded-lg shadow-[0_0_20px_rgba(27,38,59,0.4)] hover:shadow-[0_0_30px_rgba(65,90,119,0.5)] transition-all duration-300"
             >
-              Start a Project
+              Let's Build
             </Button>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
-          >
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="h-14 px-8 text-lg border-accent text-white hover:bg-accent/10 hover:text-white rounded-lg backdrop-blur-sm transition-all duration-300"
-            >
-              View Our Work
-            </Button>
-          </motion.div>
+          
         </div>
       </div>
       
