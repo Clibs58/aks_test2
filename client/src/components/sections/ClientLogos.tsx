@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const logos = [
   "/logos/ey.jpg",
@@ -10,6 +11,24 @@ const logos = [
 ];
 
 export function ClientLogos() {
+  const x = useMotionValue(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const halfWidth = el.scrollWidth / 2;
+
+    const controls = animate(x, [-halfWidth, 0], {
+      ease: "linear",
+      duration: 10,
+      repeat: Infinity,
+    });
+
+    return controls.stop;
+  }, [x]);
+
   return (
     <section className="relative py-20 bg-black overflow-hidden">
       {/* Fade edges */}
@@ -18,17 +37,10 @@ export function ClientLogos() {
 
       <div className="overflow-hidden">
         <motion.div
+          ref={containerRef}
+          style={{ x }}
           className="flex items-center gap-20 w-max"
-          initial={{ x: 0 }}
-          animate={{ x: "-50%" }}
-          transition={{
-            duration: 10,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-          style={{ willChange: "transform" }}
         >
-          {/* DUPLICATED CONTENT */}
           {[...logos, ...logos].map((src, i) => (
             <div
               key={i}
