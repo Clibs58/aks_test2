@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const logos = [
-  "/logos/ey.jpg",
+  "/facebook__logo.jpg",
   "/logos/ford.jpg",
   "/logos/infosys.jpg",
   "/logos/mercadolibre.jpg",
