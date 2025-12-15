@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const logos = [
-  "/facebook__logo.jpg",
+  "/logos/ey.jpg",
   "/logos/ford.jpg",
   "/logos/infosys.jpg",
   "/logos/mercadolibre.jpg",
@@ -17,16 +17,15 @@ export function ClientLogos() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black to-transparent z-10" />
 
       <motion.div
-        className="flex items-center gap-20 w-max mx-auto"
-        animate={{ x: ["-12%", "12%"] }}
+        className="flex items-center gap-20 w-max"
+        animate={{ x: ["0%", "-50%"] }}
         transition={{
-          duration: 10,        // faster animation
+          duration: 12,      // speed
+          ease: "linear",
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
         }}
       >
-        {logos.map((src, i) => (
+        {[...logos, ...logos].map((src, i) => (
           <div
             key={i}
             className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
