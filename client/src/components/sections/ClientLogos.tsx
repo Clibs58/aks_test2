@@ -30,7 +30,7 @@ export function ClientLogos() {
   }, [x]);
 
   return (
-    <section className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
+    <section id="portfolio" className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
       <div className="container px-6 mx-auto">
         {/* ✅ KEPT EXACTLY AS REQUESTED */}
         <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
