@@ -1,43 +1,43 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /* ---------------- Tabs ---------------- */
-const tabs = ["Home", "About", "Portfolio", "Contact"];
+const tabs = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Portfolio", id: "portfolio" },
+  { label: "Contact", id: "contact" },
+];
 
-/* ---------------- Segmented Tabs (GitHub-accurate) ---------------- */
-function SegmentedTabs() {
+/* ---------------- Segmented Tabs ---------------- */
+function SegmentedTabs({ onNavigate }) {
   const [active, setActive] = useState(0);
   const containerRef = useRef(null);
   const buttonRefs = useRef([]);
-
   const [pill, setPill] = useState({ width: 0, left: 0 });
 
   useEffect(() => {
     const activeBtn = buttonRefs.current[active];
     const container = containerRef.current;
+    if (!activeBtn || !container) return;
 
-    if (activeBtn && container) {
-      const btnRect = activeBtn.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
 
-      setPill({
-        width: btnRect.width,
-        left: btnRect.left - containerRect.left,
-      });
-    }
+    setPill({
+      width: btnRect.width,
+      left: btnRect.left - containerRect.left,
+    });
   }, [active]);
 
   return (
     <div
       ref={containerRef}
       role="tablist"
-      aria-label="Primary navigation"
       className="relative flex items-center bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md"
     >
-      {/* Accurate sliding pill */}
       <motion.div
         animate={pill}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -46,18 +46,19 @@ function SegmentedTabs() {
 
       {tabs.map((tab, i) => (
         <button
-          key={tab}
+          key={tab.id}
           ref={(el) => (buttonRefs.current[i] = el)}
-          role="tab"
-          aria-selected={active === i}
-          onClick={() => setActive(i)}
+          onClick={() => {
+            setActive(i);
+            onNavigate(tab.id);
+          }}
           className={`relative z-10 px-6 py-2 text-sm font-medium transition-colors ${
             active === i
               ? "text-white"
               : "text-gray-400 hover:text-white"
           }`}
         >
-          {tab}
+          {tab.label}
         </button>
       ))}
     </div>
@@ -75,6 +76,19 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* -------- Smooth scroll handler -------- */
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setMobileOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -87,26 +101,28 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between md:grid md:grid-cols-3">
-        {/* Left: Logo */}
+        {/* Logo */}
         <div className="flex justify-start">
-          <Link href="/" className="cursor-pointer flex items-center">
-            <img
-              src="/aks_logo_website.svg"
-              alt="Logo"
-              className="h-20 w-auto"
-            />
-          </Link>
+          <img
+            src="/aks_logo_website.svg"
+            alt="Logo"
+            className="h-20 w-auto cursor-pointer"
+            onClick={() => scrollToSection("home")}
+          />
         </div>
 
-        {/* Center: Segmented Tabs */}
+        {/* Desktop Tabs */}
         <div className="hidden md:flex justify-center">
-          <SegmentedTabs />
+          <SegmentedTabs onNavigate={scrollToSection} />
         </div>
 
-        {/* Right: CTA + Mobile toggle */}
+        {/* Right */}
         <div className="flex justify-end items-center gap-4">
           <div className="hidden md:block">
-            <Button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium transition-all">
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium"
+            >
               Join Us
             </Button>
           </div>
@@ -114,7 +130,6 @@ export function Navbar() {
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
           >
             {mobileOpen ? <X /> : <Menu />}
           </button>
@@ -128,21 +143,23 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/80 backdrop-blur-md border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-black/80 backdrop-blur-md border-b border-white/10"
           >
             <div className="flex flex-col p-6 gap-4">
-              {tabs.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-lg font-medium text-gray-300 hover:text-white"
-                  onClick={() => setMobileOpen(false)}
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => scrollToSection(tab.id)}
+                  className="text-left text-lg font-medium text-gray-300 hover:text-white"
                 >
-                  {item}
-                </a>
+                  {tab.label}
+                </button>
               ))}
 
-              <Button className="w-full bg-primary text-white mt-4">
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="w-full bg-primary text-white mt-4"
+              >
                 Join Us
               </Button>
             </div>
