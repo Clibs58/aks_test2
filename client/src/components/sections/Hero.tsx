@@ -4,7 +4,7 @@ import heroBg from "@assets/generated_images/dark_metallic_blue_abstract_hero_ba
 
 export function Hero() {
   return (
-    <section className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20 pb-32">
+    <section id="home" className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20 pb-32">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
