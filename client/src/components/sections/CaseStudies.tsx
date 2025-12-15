@@ -13,7 +13,7 @@ export function CaseStudies() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">About 4D Process</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">About AKS</h2>
           <p className="text-gray-400 text-lg">
             Product leadership. Founder-first. Built for real impact.
           </p>
