@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
@@ -7,30 +7,47 @@ import { Button } from "@/components/ui/button";
 /* ---------------- Tabs ---------------- */
 const tabs = ["Home", "About", "Portfolio", "Contact"];
 
-/* ---------------- Segmented Tabs (GitHub style) ---------------- */
+/* ---------------- Segmented Tabs (GitHub-accurate) ---------------- */
 function SegmentedTabs() {
   const [active, setActive] = useState(0);
+  const containerRef = useRef(null);
+  const buttonRefs = useRef([]);
+
+  const [pill, setPill] = useState({ width: 0, left: 0 });
+
+  useEffect(() => {
+    const activeBtn = buttonRefs.current[active];
+    const container = containerRef.current;
+
+    if (activeBtn && container) {
+      const btnRect = activeBtn.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+
+      setPill({
+        width: btnRect.width,
+        left: btnRect.left - containerRect.left,
+      });
+    }
+  }, [active]);
 
   return (
     <div
+      ref={containerRef}
       role="tablist"
       aria-label="Primary navigation"
       className="relative flex items-center bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md"
     >
-      {/* Sliding pill */}
+      {/* Accurate sliding pill */}
       <motion.div
-        layout
+        animate={pill}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="absolute top-1 bottom-1 rounded-full bg-white/10"
-        style={{
-          width: `${100 / tabs.length}%`,
-          left: `${(100 / tabs.length) * active}%`,
-        }}
       />
 
       {tabs.map((tab, i) => (
         <button
           key={tab}
+          ref={(el) => (buttonRefs.current[i] = el)}
           role="tab"
           aria-selected={active === i}
           onClick={() => setActive(i)}
@@ -65,11 +82,11 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "h-16 bg-transparent backdrop-blur-md border-white/5"
-          : "h-20 bg-transparent border-transparent"
+          ? "min-h-[72px] py-2 bg-transparent backdrop-blur-md border-white/5"
+          : "min-h-[96px] py-3 bg-transparent border-transparent"
       }`}
     >
-      <div className="container mx-auto h-full px-6 grid grid-cols-3 items-center">
+      <div className="container mx-auto px-6 grid grid-cols-3 items-center">
         {/* Left: Logo */}
         <div className="flex justify-start">
           <Link href="/" className="cursor-pointer flex items-center">
@@ -89,14 +106,11 @@ export function Navbar() {
         {/* Right: CTA + Mobile toggle */}
         <div className="flex justify-end items-center gap-4">
           <div className="hidden md:block">
-            <Button
-              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium shadow-[0_0_15px_rgba(27,38,59,0.5)] hover:shadow-[0_0_25px_rgba(65,90,119,0.6)] transition-all duration-300"
-            >
+            <Button className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium transition-all">
               Join Us
             </Button>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -114,7 +128,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-black/80 backdrop-blur-md border-b border-white/10 overflow-hidden"
           >
             <div className="flex flex-col p-6 gap-4">
               {tabs.map((item) => (
