@@ -37,7 +37,7 @@ export function Process() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Process</h2>
           <p className="text-gray-400 text-lg">
-            A streamlined approach to delivering excellence, from concept to launch.
+            Our 4D approach used to deliever best quality product.
           </p>
         </motion.div>
 
