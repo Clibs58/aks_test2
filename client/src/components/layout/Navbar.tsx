@@ -66,7 +66,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  /* -------- Scroll shadow -------- */
+  /* -------- Navbar background on scroll -------- */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -105,7 +105,11 @@ export function Navbar() {
     const el = document.getElementById(id);
     if (!el) return;
 
-    el.scrollIntoView({ behavior: "smooth" });
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
     setMobileOpen(false);
   };
 
@@ -150,16 +154,18 @@ export function Navbar() {
             </Button>
           </div>
 
+          {/* Mobile toggle */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
             {mobileOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ---------------- Mobile Menu ---------------- */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -168,12 +174,12 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-black/80 backdrop-blur-md border-b border-white/10"
           >
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col p-6 gap-6">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => scrollToSection(tab.id)}
-                  className="text-left text-lg font-medium text-gray-300 hover:text-white"
+                  className="text-left text-xl font-medium text-gray-300 hover:text-white transition-colors"
                 >
                   {tab.label}
                 </button>
@@ -181,7 +187,7 @@ export function Navbar() {
 
               <Button
                 onClick={() => scrollToSection("joinus")}
-                className="w-full bg-primary text-white mt-4"
+                className="w-full bg-primary text-white mt-6"
               >
                 Join Us
               </Button>
