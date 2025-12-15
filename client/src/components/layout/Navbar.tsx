@@ -86,7 +86,7 @@ export function Navbar() {
           : "min-h-[96px] py-3 bg-transparent border-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 grid grid-cols-3 items-center">
+      <div className="container mx-auto px-6 flex items-center justify-between md:grid md:grid-cols-3">
         {/* Left: Logo */}
         <div className="flex justify-start">
           <Link href="/" className="cursor-pointer flex items-center">
