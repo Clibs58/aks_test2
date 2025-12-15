@@ -12,14 +12,13 @@ const tabs = [
 ];
 
 /* ---------------- Segmented Tabs ---------------- */
-function SegmentedTabs({ onNavigate }) {
-  const [active, setActive] = useState(0);
+function SegmentedTabs({ activeIndex, onNavigate }) {
   const containerRef = useRef(null);
   const buttonRefs = useRef([]);
   const [pill, setPill] = useState({ width: 0, left: 0 });
 
   useEffect(() => {
-    const activeBtn = buttonRefs.current[active];
+    const activeBtn = buttonRefs.current[activeIndex];
     const container = containerRef.current;
     if (!activeBtn || !container) return;
 
@@ -30,13 +29,11 @@ function SegmentedTabs({ onNavigate }) {
       width: btnRect.width,
       left: btnRect.left - containerRect.left,
     });
-  }, [active]);
+  }, [activeIndex]);
 
   return (
     <div
       ref={containerRef}
-      role="tablist"
-      aria-label="Primary navigation"
       className="relative flex items-center bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md"
     >
       <motion.div
@@ -49,12 +46,9 @@ function SegmentedTabs({ onNavigate }) {
         <button
           key={tab.id}
           ref={(el) => (buttonRefs.current[i] = el)}
-          onClick={() => {
-            setActive(i);
-            onNavigate(tab.id);
-          }}
+          onClick={() => onNavigate(tab.id)}
           className={`relative z-10 px-6 py-2 text-sm font-medium transition-colors ${
-            active === i
+            activeIndex === i
               ? "text-white"
               : "text-gray-400 hover:text-white"
           }`}
@@ -70,23 +64,48 @@ function SegmentedTabs({ onNavigate }) {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
+  /* -------- Scroll shadow -------- */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* -------- Smooth scroll handler -------- */
+  /* -------- Scroll Spy -------- */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = tabs.findIndex(
+              (tab) => tab.id === entry.target.id
+            );
+            if (index !== -1) setActiveIndex(index);
+          }
+        });
+      },
+      {
+        rootMargin: "-40% 0px -50% 0px",
+        threshold: 0,
+      }
+    );
+
+    tabs.forEach((tab) => {
+      const el = document.getElementById(tab.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  /* -------- Smooth scroll -------- */
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
 
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-
+    el.scrollIntoView({ behavior: "smooth" });
     setMobileOpen(false);
   };
 
@@ -95,7 +114,7 @@ export function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
         scrolled
           ? "min-h-[72px] py-2 bg-black/90 backdrop-blur-md border-white/5"
           : "min-h-[96px] py-3 bg-transparent border-transparent"
@@ -114,25 +133,26 @@ export function Navbar() {
 
         {/* Desktop Tabs */}
         <div className="hidden md:flex justify-center">
-          <SegmentedTabs onNavigate={scrollToSection} />
+          <SegmentedTabs
+            activeIndex={activeIndex}
+            onNavigate={scrollToSection}
+          />
         </div>
 
-        {/* Right side */}
+        {/* Right */}
         <div className="flex justify-end items-center gap-4">
           <div className="hidden md:block">
             <Button
               onClick={() => scrollToSection("joinus")}
-              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium transition-all"
+              className="bg-primary hover:bg-primary/90 text-white px-6"
             >
               Join Us
             </Button>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
           >
             {mobileOpen ? <X /> : <Menu />}
           </button>
