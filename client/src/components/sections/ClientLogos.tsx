@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 
-// Use SVGs or PNGs here
 const logos = [
-  "/home/project/client/public/facebook__logo.jpg"
+  "/logos/ey.jpg",
+  "/logos/ford.jpg",
+  "/logos/infosys.jpg",
+  "/logos/mercadolibre.jpg",
+  "/logos/mercedes.jpg",
+  "/logos/shopify.jpg",
 ];
 
 export function ClientLogos() {
@@ -16,7 +20,7 @@ export function ClientLogos() {
         className="flex items-center gap-20 w-max mx-auto"
         animate={{ x: ["-12%", "12%"] }}
         transition={{
-          duration: 18,
+          duration: 10,        // faster animation
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut",
@@ -30,7 +34,7 @@ export function ClientLogos() {
             <img
               src={src}
               alt="Client logo"
-              className="h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
             />
           </div>
         ))}
