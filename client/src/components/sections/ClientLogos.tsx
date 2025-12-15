@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 // Use SVGs or PNGs here
 const logos = [
-  "/facebook_logo.jpg"
+  "/home/project/client/public/facebook__logo.jpg"
 ];
 
 export function ClientLogos() {
