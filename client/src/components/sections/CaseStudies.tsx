@@ -46,8 +46,16 @@ export function CaseStudies() {
                 Purpose
               </span>
 
+              {/* Underlined heading (same animation as JoinUs) */}
               <h3 className="text-3xl md:text-4xl font-bold mb-6">
-                Building Products That Matter
+                <span className="group relative inline-block cursor-default">
+                  <span className="relative z-10">
+                    Building Products That Matter
+                  </span>
+
+                  {/* underline */}
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent shadow-[0_0_10px_rgba(65,90,119,0.8)] origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </span>
               </h3>
 
               <p className="text-gray-400 text-lg leading-relaxed">
