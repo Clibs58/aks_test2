@@ -82,7 +82,7 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "min-h-[72px] py-2 bg-black/20 backdrop-blur-md border-white/5"
+          ? "min-h-[72px] py-2 bg-black/90 backdrop-blur-md border-white/5"
           : "min-h-[96px] py-3 bg-transparent border-transparent"
       }`}
     >
