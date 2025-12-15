@@ -1,41 +1,40 @@
 import { motion } from "framer-motion";
-import { Activity, Box, Circle, Hexagon, Triangle, Zap } from "lucide-react";
 
-const logos = [Hexagon, Zap, Circle, Triangle, Activity, Box];
+// Use SVGs or PNGs here
+const logos = [
+  "/facebook_logo.jpg"
+];
 
 export function ClientLogos() {
   return (
-    <section className="py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
-      <div className="container px-6 mx-auto">
-        <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
-          Trusted by Industry Leaders
-        </p>
+    <section className="relative py-20 bg-black overflow-hidden">
+      {/* Fade edges */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black to-transparent z-10" />
 
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-16 w-max mx-auto"
-            animate={{ x: ["-10%", "10%"] }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
+      <motion.div
+        className="flex items-center gap-20 w-max mx-auto"
+        animate={{ x: ["-12%", "12%"] }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      >
+        {logos.map((src, i) => (
+          <div
+            key={i}
+            className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
           >
-            {logos.map((Icon, i) => (
-              <div
-                key={i}
-                className="group flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-              >
-                <Icon
-                  className="w-10 h-10 text-white group-hover:text-accent transition-colors duration-300"
-                  strokeWidth={1.5}
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
+            <img
+              src={src}
+              alt="Client logo"
+              className="h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+            />
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }
