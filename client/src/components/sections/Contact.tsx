@@ -19,8 +19,8 @@ export function Contact() {
           >
             <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Let's build <br />
-              <span className="text-white">something</span>
-              <span className="text-gray-500">extraordinary.</span> <br />
+              <span className="text-gray-500">something</span> <br />
+              <span className="text-white">extraordinary.</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-md mt-8">
               Ready to transform your digital presence? We're here to help you succeed.
