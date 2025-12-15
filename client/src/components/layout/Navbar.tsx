@@ -36,6 +36,7 @@ function SegmentedTabs({ onNavigate }) {
     <div
       ref={containerRef}
       role="tablist"
+      aria-label="Primary navigation"
       className="relative flex items-center bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md"
     >
       <motion.div
@@ -116,20 +117,22 @@ export function Navbar() {
           <SegmentedTabs onNavigate={scrollToSection} />
         </div>
 
-        {/* Right */}
+        {/* Right side */}
         <div className="flex justify-end items-center gap-4">
           <div className="hidden md:block">
             <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium"
+              onClick={() => scrollToSection("joinus")}
+              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium transition-all"
             >
               Join Us
             </Button>
           </div>
 
+          {/* Mobile toggle */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
             {mobileOpen ? <X /> : <Menu />}
           </button>
@@ -157,7 +160,7 @@ export function Navbar() {
               ))}
 
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("joinus")}
                 className="w-full bg-primary text-white mt-4"
               >
                 Join Us
