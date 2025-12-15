@@ -30,7 +30,14 @@ export function ClientLogos() {
   }, [x]);
 
   return (
-    <section className="relative py-20 bg-black overflow-hidden">
+    <section className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
+      <div className="container px-6 mx-auto">
+        {/* ✅ KEPT EXACTLY AS REQUESTED */}
+        <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
+          Trusted by Industry Leaders
+        </p>
+      </div>
+
       {/* Fade edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black to-transparent z-10" />
