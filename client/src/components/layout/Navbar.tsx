@@ -69,35 +69,42 @@ export function Navbar() {
           : "h-20 bg-transparent border-transparent"
       }`}
     >
-      <div className="container mx-auto h-full px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="cursor-pointer flex items-center">
-          <img
-            src="/aks_logo_website.svg"
-            alt="Logo"
-            className="h-20 w-auto"
-          />
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          <SegmentedTabs />
-
-          <Button
-            className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium shadow-[0_0_15px_rgba(27,38,59,0.5)] hover:shadow-[0_0_25px_rgba(65,90,119,0.6)] transition-all duration-300"
-          >
-            Join Us
-          </Button>
+      <div className="container mx-auto h-full px-6 grid grid-cols-3 items-center">
+        {/* Left: Logo */}
+        <div className="flex justify-start">
+          <Link href="/" className="cursor-pointer flex items-center">
+            <img
+              src="/aks_logo_website.svg"
+              alt="Logo"
+              className="h-10 w-auto"
+            />
+          </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X /> : <Menu />}
-        </button>
+        {/* Center: Segmented Tabs */}
+        <div className="hidden md:flex justify-center">
+          <SegmentedTabs />
+        </div>
+
+        {/* Right: CTA + Mobile toggle */}
+        <div className="flex justify-end items-center gap-4">
+          <div className="hidden md:block">
+            <Button
+              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-6 font-medium shadow-[0_0_15px_rgba(27,38,59,0.5)] hover:shadow-[0_0_25px_rgba(65,90,119,0.6)] transition-all duration-300"
+            >
+              Join Us
+            </Button>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
