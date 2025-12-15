@@ -11,23 +11,21 @@ export function ClientLogos() {
           Trusted by Industry Leaders
         </p>
 
-        {/* Marquee wrapper */}
         <div className="relative w-full overflow-hidden">
           <motion.div
-            className="flex gap-16 w-max"
-            animate={{ x: ["0%", "-50%"] }}
+            className="flex gap-16 w-max mx-auto"
+            animate={{ x: ["-10%", "10%"] }}
             transition={{
+              duration: 12,
               repeat: Infinity,
-              repeatType: "loop",
-              duration: 20,
-              ease: "linear",
+              repeatType: "reverse",
+              ease: "easeInOut",
             }}
           >
-            {/* Duplicate logos for seamless loop */}
-            {[...logos, ...logos].map((Icon, i) => (
+            {logos.map((Icon, i) => (
               <div
                 key={i}
-                className="group flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300"
+                className="group flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
               >
                 <Icon
                   className="w-10 h-10 text-white group-hover:text-accent transition-colors duration-300"
