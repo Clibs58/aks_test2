@@ -65,17 +65,14 @@ export function Mentors() {
           {mentors.map((mentor, i) => (
             <motion.div
               key={mentor.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              animate={{ y: [0, -12, 0] }}
               transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.4,
+                duration: 0.6,
+                ease: "easeOut",
+                delay: i * 0.12,
               }}
-              whileHover={{ y: -18 }}
               className="group relative flex flex-col items-center text-center"
             >
               {/* Index */}
@@ -94,14 +91,17 @@ export function Mentors() {
                 />
               </div>
 
+              {/* Name */}
               <h3 className="text-2xl font-semibold text-white mb-2">
                 {mentor.name}
               </h3>
 
+              {/* Role */}
               <p className="text-gray-400 mb-4">
                 {mentor.role}
               </p>
 
+              {/* Profile */}
               <a
                 href={mentor.profile}
                 className="text-sm text-gray-400 inline-flex items-center gap-2 transition-colors group-hover:text-white"
