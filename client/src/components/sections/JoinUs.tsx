@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export function JoinUs() {
   return (
-    <section id="joinus" className="py-32 bg-muted/20">
+    <section id="joinus mentor" className="py-32 bg-muted/20">
       <div className="container px-6 mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
