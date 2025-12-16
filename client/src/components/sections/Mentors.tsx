@@ -5,7 +5,7 @@ const mentors = [
     id: "01",
     name: "Abhishek R",
     role: "CEO @ Neoviz Technologies Pvt. Ltd.",
-    image: "/mentors/abhishek.jpg",
+    image: "Abhishek.jpg",
     quote: "Great products are built by teams who care deeply about users.",
     profile: "#",
   },
