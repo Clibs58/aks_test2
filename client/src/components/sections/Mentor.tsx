@@ -48,7 +48,7 @@ const mentors = [
 export function Mentors() {
   return (
     <section
-      id="mentors"
+      id="mentor"
       className="relative py-32 bg-black overflow-hidden"
     >
       <div className="container px-6 mx-auto">
