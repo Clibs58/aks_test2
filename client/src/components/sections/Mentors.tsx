@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 const mentors = [
   {
     id: "01",
-    name: "Abhishek Rana",
-    role: "CTO @ Neoviz Technologies Pvt. Ltd.",
+    name: "Abhishek R",
+    role: "CEO @ Neoviz Technologies Pvt. Ltd.",
     image: "/Abhishek.png",
     profile: "#",
   },
@@ -87,7 +87,7 @@ export function Mentors() {
                 <img
                   src={mentor.image}
                   alt={mentor.name}
-                  className="relative z-10 h-28 w-28 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="relative z-10 h-28 w-28 rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
 
