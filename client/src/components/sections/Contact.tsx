@@ -1,16 +1,36 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const faqs = [
+  {
+    q: "Who can work with AKS?",
+    a: "We work with student founders, early-stage startups, and builders who want to ship real products.",
+  },
+  {
+    q: "Do you provide mentorship or execution?",
+    a: "Both. We act as an embedded product team — from strategy to execution and launch.",
+  },
+  {
+    q: "Is this suitable for first-time founders?",
+    a: "Absolutely. AKS is built founder-first and is especially helpful for first-time builders.",
+  },
+];
+
 export function Contact() {
+  const [open, setOpen] = useState<number | null>(0);
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
-      {/* Background Gradient Pulse */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none animate-pulse duration-[4000ms]" />
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container px-6 mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          
+          {/* ================= LEFT SIDE ================= */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -22,11 +42,58 @@ export function Contact() {
               <span className="text-white">something</span><br />
               <span className="text-gray-500">extraordinary</span>.
             </h2>
-            <p className="text-xl text-gray-400 max-w-md mt-8">
+
+            <p className="text-xl text-gray-400 max-w-md mt-8 mb-12">
               Ready to transform your digital presence? We're here to help you succeed.
             </p>
+
+            {/* FAQs */}
+            <div className="space-y-4 max-w-md">
+              {faqs.map((faq, i) => {
+                const isOpen = open === i;
+
+                return (
+                  <div
+                    key={i}
+                    className="border border-white/10 rounded-xl bg-white/5 backdrop-blur-lg"
+                  >
+                    <button
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between px-5 py-4 text-left"
+                    >
+                      <span className="text-white font-medium">
+                        {faq.q}
+                      </span>
+                      <motion.span
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="text-xl text-gray-400"
+                      >
+                        +
+                      </motion.span>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <div className="px-5 pb-4 text-gray-400 text-sm leading-relaxed">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
 
+          {/* ================= RIGHT SIDE (FORM) ================= */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,24 +101,24 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl"
           >
-           <form className="space-y-6">
+            <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Name</label>
-                  <Input className="bg-white/5 border-white/10 focus:border-accent text-white h-12" placeholder="John Doe" />
+                  <label className="text-sm text-gray-300">Name</label>
+                  <Input className="bg-white/5 border-white/10 text-white h-12" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-300">Email</label>
-                  <Input className="bg-white/5 border-white/10 focus:border-accent text-white h-12" placeholder="john@example.com" />
+                  <label className="text-sm text-gray-300">Email</label>
+                  <Input className="bg-white/5 border-white/10 text-white h-12" />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-300">Message</label>
-                <Textarea className="bg-white/5 border-white/10 focus:border-accent text-white min-h-[150px]" placeholder="Tell us about your project..." />
+                <label className="text-sm text-gray-300">Message</label>
+                <Textarea className="bg-white/5 border-white/10 text-white min-h-[150px]" />
               </div>
 
-              <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg font-medium shadow-lg shadow-primary/20">
+              <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg shadow-lg shadow-primary/20">
                 Send Message
               </Button>
             </form>
