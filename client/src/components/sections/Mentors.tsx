@@ -6,6 +6,7 @@ const mentors = [
     name: "Abhishek R",
     role: "CEO @ Neoviz Technologies Pvt. Ltd.",
     image: "/Abhishek.jpg",
+    quote: "Great products are built by teams who care deeply about users.",
     profile: "#",
   },
   {
@@ -13,6 +14,7 @@ const mentors = [
     name: "John Edwards",
     role: "Founder @ Calvaryrobe Regals",
     image: "/mentors/john.jpg",
+    quote: "Execution beats ideas. Build fast, learn faster.",
     profile: "#",
   },
   {
@@ -20,6 +22,7 @@ const mentors = [
     name: "Rachit Kumar",
     role: "Head — GTM & Payments AI @ LinkedIn",
     image: "/mentors/rachit.jpg",
+    quote: "Clarity in thinking leads to speed in execution.",
     profile: "#",
   },
   {
@@ -27,6 +30,7 @@ const mentors = [
     name: "Partho Ghosh",
     role: "Scientist @ ISRO",
     image: "/mentors/partho.jpg",
+    quote: "Precision, patience, and persistence define success.",
     profile: "#",
   },
   {
@@ -34,6 +38,7 @@ const mentors = [
     name: "Josh Praveen",
     role: "VP @ SnapMenu",
     image: "/mentors/josh.jpg",
+    quote: "Scale comes from systems, not heroics.",
     profile: "#",
   },
   {
@@ -41,6 +46,7 @@ const mentors = [
     name: "Lalit Mohan",
     role: "ICF CFA — IRS",
     image: "/mentors/lalit.jpg",
+    quote: "Discipline compounds faster than motivation.",
     profile: "#",
   },
 ];
@@ -68,13 +74,26 @@ export function Mentors() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                ease: "easeOut",
-                delay: i * 0.12,
-              }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.12 }}
               className="group relative flex flex-col items-center text-center"
             >
+              {/* Quote Card */}
+              <div
+                className="
+                  absolute -top-32 w-72
+                  opacity-0 translate-y-4
+                  group-hover:opacity-100 group-hover:translate-y-0
+                  transition-all duration-300
+                  pointer-events-none
+                  z-20
+                "
+              >
+                <div className="relative rounded-xl bg-[#0b1220] border border-white/10 p-4 text-sm text-gray-200 shadow-xl">
+                  “{mentor.quote}”
+                  <div className="absolute left-1/2 -bottom-2 h-3 w-3 -translate-x-1/2 rotate-45 bg-[#0b1220] border-r border-b border-white/10" />
+                </div>
+              </div>
+
               {/* Index */}
               <div className="absolute -top-6 flex items-center gap-3 text-gray-500 text-sm">
                 <span className="h-[1px] w-10 bg-white/20" />
