@@ -3,7 +3,6 @@ import { Hero } from "@/components/sections/Hero";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Process } from "@/components/sections/Process";
 import { CaseStudies } from "@/components/sections/CaseStudies";
-import { Mentors } from "@/components/Mentors";
 import { JoinUs } from "@/components/sections/JoinUs";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
@@ -17,7 +16,6 @@ export default function Home() {
         <CaseStudies />
         <ClientLogos />
         <Process />
-        <Mentors/>
         <JoinUs />
         <Contact />
       </main>
