@@ -47,7 +47,7 @@ const mentors = [
 
 export function Mentors() {
   return (
-    <section id="mentors" className="relative py-32 bg-black overflow-hidden">
+    <section id="mentors" className="relative py-32 bg-black">
       <div className="container px-6 mx-auto">
 
         {/* Heading */}
@@ -78,7 +78,7 @@ export function Mentors() {
               whileHover={{ y: -18 }}
               className="group relative flex flex-col items-center text-center"
             >
-              {/* Index line */}
+              {/* Index */}
               <div className="absolute -top-6 flex items-center gap-3 text-gray-500 text-sm">
                 <span className="h-[1px] w-10 bg-white/20" />
                 {mentor.id}
@@ -86,27 +86,22 @@ export function Mentors() {
 
               {/* Avatar */}
               <div className="relative mb-8">
-                {/* Glow (additive only) */}
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl bg-accent/40" />
-
                 <img
                   src={mentor.image}
                   alt={mentor.name}
-                  className="relative z-10 h-28 w-28 rounded-full object-cover transition-transform duration-300"
+                  className="relative z-10 h-28 w-28 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
 
-              {/* Name */}
               <h3 className="text-2xl font-semibold text-white mb-2">
                 {mentor.name}
               </h3>
 
-              {/* Role */}
               <p className="text-gray-400 mb-4">
                 {mentor.role}
               </p>
 
-              {/* Profile */}
               <a
                 href={mentor.profile}
                 className="text-sm text-gray-400 inline-flex items-center gap-2 transition-colors group-hover:text-white"
