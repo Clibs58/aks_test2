@@ -1,8 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 const faqs = [
   {
@@ -17,6 +14,10 @@ const faqs = [
     q: "Is this suitable for first-time founders?",
     a: "Absolutely. AKS is built founder-first and is especially helpful for first-time builders.",
   },
+  {
+    q: "How do I get started?",
+    a: "Reach out to us via email or socials, and we’ll take it from there.",
+  },
 ];
 
 export function Contact() {
@@ -29,7 +30,7 @@ export function Contact() {
 
       <div className="container px-6 mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          
+
           {/* ================= LEFT SIDE ================= */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -43,19 +44,32 @@ export function Contact() {
               <span className="text-gray-500">extraordinary</span>.
             </h2>
 
-            <p className="text-xl text-gray-400 max-w-md mt-8 mb-12">
-              Ready to transform your digital presence? We're here to help you succeed.
+            <p className="text-xl text-gray-400 max-w-md mt-8">
+              Ready to transform your digital presence?  
+              We’re here to help you succeed.
             </p>
+          </motion.div>
 
-            {/* FAQs */}
-            <div className="space-y-4 max-w-md">
+          {/* ================= RIGHT SIDE (FAQs CARD) ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl"
+          >
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-4">
               {faqs.map((faq, i) => {
                 const isOpen = open === i;
 
                 return (
                   <div
                     key={i}
-                    className="border border-white/10 rounded-xl bg-white/5 backdrop-blur-lg"
+                    className="border border-white/10 rounded-xl bg-white/5"
                   >
                     <button
                       onClick={() => setOpen(isOpen ? null : i)}
@@ -91,37 +105,6 @@ export function Contact() {
                 );
               })}
             </div>
-          </motion.div>
-
-          {/* ================= RIGHT SIDE (FORM) ================= */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl"
-          >
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-300">Name</label>
-                  <Input className="bg-white/5 border-white/10 text-white h-12" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-300">Email</label>
-                  <Input className="bg-white/5 border-white/10 text-white h-12" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm text-gray-300">Message</label>
-                <Textarea className="bg-white/5 border-white/10 text-white min-h-[150px]" />
-              </div>
-
-              <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg shadow-lg shadow-primary/20">
-                Send Message
-              </Button>
-            </form>
           </motion.div>
         </div>
       </div>
