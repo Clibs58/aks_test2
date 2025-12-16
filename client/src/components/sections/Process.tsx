@@ -35,7 +35,9 @@ export function Process() {
           viewport={{ once: true }}
           className="mb-20 max-w-2xl"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Process</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Our Process
+          </h2>
           <p className="text-gray-400 text-lg">
             Our 4D approach used to deliver best quality product.
           </p>
@@ -61,20 +63,30 @@ export function Process() {
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -6 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.4, ease: "easeOut" }}
-                className="relative pt-4 md:pt-12 cursor-default transition-shadow duration-300 hover:drop-shadow-[0_0_24px_hsl(var(--accent)/0.15)]"
+                transition={{
+                  delay: i * 0.2,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                className="group relative pt-4 md:pt-12 cursor-default transition-transform duration-300"
               >
-                {/* Accent Number */}
-                <motion.span
-                  className="text-6xl font-bold text-accent/30 absolute top-0 left-0 -translate-y-1/4 md:translate-y-0 z-0 select-none"
-                  whileHover={{ opacity: 0.5 }}
-                  transition={{ duration: 0.3 }}
+                {/* Accent Number (GLOWS ON CARD HOVER) */}
+                <span
+                  className="
+                    text-6xl font-bold text-accent/30
+                    absolute top-0 left-0
+                    -translate-y-1/4 md:translate-y-0
+                    z-0 select-none
+                    transition-all duration-300
+                    group-hover:text-accent/60
+                    group-hover:drop-shadow-[0_0_18px_hsl(var(--accent)/0.5)]
+                  "
                 >
                   {step.num}
-                </motion.span>
+                </span>
 
                 {/* Content */}
-                <div className="relative z-10 group">
+                <div className="relative z-10">
                   <h3 className="text-2xl font-semibold mb-4 text-white underline-offset-4 transition-all duration-300 group-hover:underline">
                     {step.title}
                   </h3>
@@ -90,4 +102,3 @@ export function Process() {
     </section>
   );
 }
-
