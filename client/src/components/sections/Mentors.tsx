@@ -47,11 +47,9 @@ const mentors = [
 
 export function Mentors() {
   return (
-    <section
-      id="mentors"
-      className="relative py-32 bg-black overflow-hidden"
-    >
+    <section id="mentors" className="relative py-32 bg-black overflow-hidden">
       <div className="container px-6 mx-auto">
+
         {/* Heading */}
         <div className="mb-20 max-w-2xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -70,19 +68,17 @@ export function Mentors() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              animate={{
-                y: [0, -12, 0],
-              }}
+              animate={{ y: [0, -12, 0] }}
               transition={{
                 duration: 6,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: i * 0.4, // staggered levitation
+                delay: i * 0.4,
               }}
               whileHover={{ y: -18 }}
               className="group relative flex flex-col items-center text-center"
             >
-              {/* Top index line */}
+              {/* Index line */}
               <div className="absolute -top-6 flex items-center gap-3 text-gray-500 text-sm">
                 <span className="h-[1px] w-10 bg-white/20" />
                 {mentor.id}
@@ -90,16 +86,18 @@ export function Mentors() {
 
               {/* Avatar */}
               <div className="relative mb-8">
+                {/* Glow (additive only) */}
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl bg-accent/40" />
+
                 <img
                   src={mentor.image}
                   alt={mentor.name}
-                  className="relative z-10 h-28 w-28 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="relative z-10 h-28 w-28 rounded-full object-cover transition-transform duration-300"
                 />
               </div>
 
               {/* Name */}
-              <h3 className="text-2xl font-semibold text-white mb-2 transition-colors group-hover:text-white">
+              <h3 className="text-2xl font-semibold text-white mb-2">
                 {mentor.name}
               </h3>
 
@@ -108,7 +106,7 @@ export function Mentors() {
                 {mentor.role}
               </p>
 
-              {/* Profile link */}
+              {/* Profile */}
               <a
                 href={mentor.profile}
                 className="text-sm text-gray-400 inline-flex items-center gap-2 transition-colors group-hover:text-white"
