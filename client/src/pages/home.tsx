@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { Portfolio } from "@/components/sections/Portfolio";
 import { CaseStudies } from "@/components/sections/CaseStudies";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { Mentors } from "@/components/sections/Mentors";
 import { JoinUs } from "@/components/sections/JoinUs";
 import { Contact } from "@/components/sections/Contact";
@@ -20,8 +20,7 @@ export default function Home() {
       <main>
         <Hero />
         <CaseStudies />
-        <ClientLogos />
-        <Process />
+        <Portfolio /> {/* ✅ ClientLogos + Process */}
         <Mentors />
         <JoinUs />
         <Contact />
