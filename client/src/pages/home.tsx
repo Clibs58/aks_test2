@@ -2,8 +2,7 @@ import { useEffect } from "react";
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { ClientLogos } from "@/components/sections/ClientLogos";
-import { Process } from "@/components/sections/Process";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Mentors } from "@/components/sections/Mentors";
 import { JoinUs } from "@/components/sections/JoinUs";
