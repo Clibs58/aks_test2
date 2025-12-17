@@ -11,7 +11,6 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
-  // ✅ Force scroll to top on reload / fresh visit
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
