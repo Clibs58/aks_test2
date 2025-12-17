@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { ClientLogos } from "@/components/sections/ClientLogos";
@@ -9,6 +11,11 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
+  // ✅ Force scroll to top on reload / fresh visit
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white overflow-x-hidden">
       <Navbar />
