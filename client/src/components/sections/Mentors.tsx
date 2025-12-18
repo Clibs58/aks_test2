@@ -18,8 +18,8 @@ const mentors = [
   {
     id: "02",
     name: "Vineet Yadav"",
-    role: "Founder @ SleekandPeek",
-    image: "vineet.jpg",
+    role: "Founder @ Sleekand",
+    image: "/mentors/john.jpg",
     profile: "https://www.linkedin.com/in/johnedwards",
   },
   {
