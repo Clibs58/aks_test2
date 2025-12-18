@@ -25,7 +25,7 @@ const mentors = [
     id: "03",
     name: "Shrey Baldev",
     role: "Founder @ Moon Finance",
-    image: "shrey.jpg",
+    image: "mentors/shrey.jpg",
     profile: "https://www.linkedin.com/in/shreybaldev/",
   },
   {
