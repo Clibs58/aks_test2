@@ -7,7 +7,7 @@ const mentors = [
     role: "Founder @ MyPerro",
     image: "sai_perro.jpg",
     quote: "Great products are built by teams who care deeply about users.",
-    profile: "https://www.linkedin.com/in/abhishekrana", // example
+    profile: "https://www.linkedin.com/in/saiprasadpandilwar", // example
   },
   {
     id: "02",
