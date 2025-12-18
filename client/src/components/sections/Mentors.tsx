@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 const mentors = [
   {
     id: "01",
-    name: "Abhishek R",
-    role: "CEO @ Neoviz Technologies Pvt. Ltd.",
-    image: "Abhishek.jpg",
+    name: "Saiprasad Pandilwar",
+    role: "Founder @ MyPerro",
+    image: "sai_perro.jpg",
     quote: "Great products are built by teams who care deeply about users.",
     profile: "https://www.linkedin.com/in/abhishekrana", // example
   },
