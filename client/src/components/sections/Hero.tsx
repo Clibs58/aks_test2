@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroBg from "@assets/generated_images/dark_metallic_blue_abstract_hero_background.png";
+import heroBg from"/home/project/attached_assets/generated_images/dark_metallic_blue_abstract_hero_background.png";
 
 export function Hero() {
   return (
