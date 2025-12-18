@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 const mentors = [
   {
     id: "01",
-    name: "Saiprasad Pandilwar",
-    role: "Founder @ MyPerro",
-    image: "sai_perro.jpg",
+    name: "Abhishek R",
+    role: "CEO @ Neoviz Technologies Pvt. Ltd.",
+    image: "Abhishek.jpg",
     quote: "Great products are built by teams who care deeply about users.",
-    profile: "https://www.linkedin.com/in/saiprasadpandilwar", // example
+    profile: "https://www.linkedin.com/in/abhishekrana",
   },
   {
     id: "02",
@@ -57,7 +57,9 @@ export function Mentors() {
       <div className="container px-6 mx-auto">
         {/* Heading */}
         <div className="mb-20 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Mentors</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Our Mentors
+          </h2>
           <p className="text-gray-400 text-lg">
             Guidance from industry leaders shaping the next generation of builders.
           </p>
@@ -75,9 +77,16 @@ export function Mentors() {
           transition={{ duration: 25, ease: "linear", repeat: Infinity }}
         >
           {[...mentors, ...mentors].map((mentor, i) => (
-            <div key={i} className="relative group flex-shrink-0 w-56 text-center">
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              className="relative flex-shrink-0 w-56 text-center
+                         rounded-2xl bg-white/5 border border-white/10
+                         px-6 py-8"
+            >
               {/* Quote */}
-              <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+              <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-64 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                 <div className="rounded-xl bg-[#0b1220] border border-white/10 p-4 text-sm text-gray-200 shadow-xl">
                   “{mentor.quote}”
                 </div>
@@ -85,7 +94,7 @@ export function Mentors() {
 
               {/* Avatar */}
               <div className="relative mb-6 flex justify-center">
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl bg-accent/40" />
+                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
                   src={mentor.image}
                   alt={mentor.name}
@@ -93,18 +102,26 @@ export function Mentors() {
                 />
               </div>
 
-              <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
-              <p className="text-sm text-gray-400 mt-1">{mentor.role}</p>
+              <h3 className="text-lg font-semibold text-white">
+                {mentor.name}
+              </h3>
+              <p className="text-sm text-gray-400 mt-1">
+                {mentor.role}
+              </p>
 
               <a
                 href={mentor.profile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1 text-sm text-accent"
+                className="mt-4 inline-flex items-center gap-2
+                           rounded-full border border-white/20
+                           bg-white/5 px-4 py-1.5
+                           text-sm font-medium text-white
+                           hover:bg-white/10 transition"
               >
                 View Profile →
               </a>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
@@ -117,12 +134,18 @@ export function Mentors() {
               key={mentor.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 40px rgba(255,255,255,0.15)",
+              }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative flex flex-col items-center text-center"
+              transition={{ duration: 0.4, delay: i * 0.12 }}
+              className="relative flex flex-col items-center text-center
+                         rounded-3xl bg-white/5 border border-white/10
+                         px-8 py-10"
             >
               {/* Quote */}
-              <div className="absolute -top-32 w-72 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none z-20">
+              <div className="absolute -top-32 w-72 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                 <div className="rounded-xl bg-[#0b1220] border border-white/10 p-4 text-sm text-gray-200 shadow-xl">
                   “{mentor.quote}”
                 </div>
@@ -130,11 +153,11 @@ export function Mentors() {
 
               {/* Avatar */}
               <div className="relative mb-8">
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl bg-accent/40" />
+                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
                   src={mentor.image}
                   alt={mentor.name}
-                  className="relative z-10 h-28 w-28 rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="relative z-10 h-28 w-28 rounded-full object-cover"
                 />
               </div>
 
@@ -147,10 +170,12 @@ export function Mentors() {
                 href={mentor.profile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1 text-sm text-accent
-                           opacity-0 translate-y-2
-                           group-hover:opacity-100 group-hover:translate-y-0
-                           transition-all duration-300"
+                className="mt-6 inline-flex items-center gap-2
+                           rounded-full border border-white/20
+                           bg-white/5 px-5 py-2
+                           text-sm font-medium text-white
+                           transition
+                           hover:bg-white/10 hover:border-white/40"
               >
                 View Profile →
               </a>
