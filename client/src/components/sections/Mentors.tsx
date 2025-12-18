@@ -1,4 +1,9 @@
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useMotionTemplate,
+  animate,
+} from "framer-motion";
 import { useEffect } from "react";
 
 const mentors = [
@@ -47,43 +52,74 @@ const mentors = [
 ];
 
 export function Mentors() {
-  /* ================= CURSOR REACTIVE BACKGROUND ================= */
+  /* ================= CURSOR VALUES ================= */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  /* Ambient drift */
+  const ambientX = useMotionValue(50);
+  const ambientY = useMotionValue(50);
+
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+    window.addEventListener("mousemove", move);
 
-  const background = useMotionTemplate`
+    animate(ambientX, [20, 80, 20], {
+      duration: 18,
+      repeat: Infinity,
+      ease: "easeInOut",
+    });
+
+    animate(ambientY, [30, 70, 30], {
+      duration: 22,
+      repeat: Infinity,
+      ease: "easeInOut",
+    });
+
+    return () => window.removeEventListener("mousemove", move);
+  }, [mouseX, mouseY, ambientX, ambientY]);
+
+  /* ================= BACKGROUND LAYERS ================= */
+
+  // Strong cursor spotlight
+  const spotlight = useMotionTemplate`
     radial-gradient(
-      600px circle at ${mouseX}px ${mouseY}px,
-      rgba(11,31,51,0.25),
+      500px circle at ${mouseX}px ${mouseY}px,
+      rgba(11,31,51,0.45),
       transparent 65%
     )
   `;
 
+  // Ambient breathing glow
+  const ambientGlow = useMotionTemplate`
+    radial-gradient(
+      800px circle at ${ambientX}% ${ambientY}%,
+      rgba(11,31,51,0.25),
+      transparent 70%
+    )
+  `;
+
   return (
-    <section
-      id="mentors"
-      className="relative py-32 bg-black overflow-hidden"
-    >
-      {/* ===== LIVE WALLPAPER (DESKTOP ONLY) ===== */}
+    <section id="mentors" className="relative py-32 bg-black overflow-hidden">
+      {/* ================= EXPRESSIVE LIVE WALLPAPER ================= */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden md:block"
-        style={{ background }}
+        style={{ background: ambientGlow }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block mix-blend-screen"
+        style={{ background: spotlight }}
       />
 
+      {/* ================= CONTENT ================= */}
       <div className="relative z-10">
         <div className="container px-6 mx-auto">
-          {/* Heading */}
           <div className="mb-20 max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Our Mentors
@@ -96,9 +132,6 @@ export function Mentors() {
 
         {/* ================= MOBILE MARQUEE ================= */}
         <div className="md:hidden relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
-
           <motion.div
             className="flex gap-6 w-max px-6"
             animate={{ x: ["0%", "-50%"] }}
@@ -109,27 +142,22 @@ export function Mentors() {
                 key={i}
                 className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0"
               >
-                <div className="relative mb-5 flex justify-center">
-                  <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    className="relative z-10 h-20 w-20 rounded-full object-cover border border-white/20"
-                  />
-                </div>
-
+                <img
+                  src={mentor.image}
+                  alt={mentor.name}
+                  className="mx-auto mb-4 h-20 w-20 rounded-full object-cover border border-white/20"
+                />
                 <h3 className="text-lg font-semibold text-white">
                   {mentor.name}
                 </h3>
-                <p className="text-sm text-gray-400 mt-1 mb-4">
+                <p className="text-sm text-gray-400 mb-4">
                   {mentor.role}
                 </p>
-
                 <a
                   href={mentor.profile}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-white hover:bg-[#0B1F33] hover:border-[#0B1F33] transition-colors duration-150 ease-out"
+                  className="inline-flex rounded-md border border-white/20 bg-white/5 px-4 py-1.5 text-sm text-white hover:bg-[#0B1F33] transition-colors duration-150"
                 >
                   View Profile →
                 </a>
@@ -155,30 +183,25 @@ export function Mentors() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: i * 0.08 }}
-                whileHover={{ scale: 1.02 }}
-                className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8 transition-transform duration-150 ease-out"
+                whileHover={{ scale: 1.03 }}
+                className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8"
               >
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    className="relative z-10 h-28 w-28 rounded-full object-cover border border-white/20"
-                  />
-                </div>
-
-                <h3 className="text-2xl font-semibold text-white mb-2 text-center">
+                <img
+                  src={mentor.image}
+                  alt={mentor.name}
+                  className="mb-6 h-28 w-28 rounded-full object-cover border border-white/20"
+                />
+                <h3 className="text-2xl font-semibold text-white mb-2">
                   {mentor.name}
                 </h3>
-                <p className="text-gray-400 text-center mb-6">
+                <p className="text-gray-400 mb-6 text-center">
                   {mentor.role}
                 </p>
-
                 <a
                   href={mentor.profile}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto mb-8 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white hover:bg-[#0B1F33] hover:border-[#0B1F33] transition-colors duration-150 ease-out"
+                  className="mt-auto mb-8 inline-flex rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm text-white hover:bg-[#0B1F33] transition-colors duration-150"
                 >
                   View Profile →
                 </a>
