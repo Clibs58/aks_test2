@@ -11,7 +11,7 @@ const mentors = [
     id: "01",
     name: "Saiprasad Pandilwar",
     role: "Founder @ MyPerro",
-    image: "sai_perro.jpg",
+    image: "client/public/mentors/sai_perro.jpg",
     profile: "https://www.linkedin.com/in/saiprasadpandilwar/",
   },
   {
@@ -25,7 +25,7 @@ const mentors = [
     id: "03",
     name: "Shrey Baldev",
     role: "Founder @ Moon Finance",
-    image: "",
+    image: "mentors/shrey.jpg",
     profile: "https://www.linkedin.com/in/shreybaldev/",
   },
   {
