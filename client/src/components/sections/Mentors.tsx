@@ -73,8 +73,13 @@ export function Mentors() {
             <div
               key={i}
               className="
-                w-64 rounded-3xl bg-white/5 border border-white/10
-                px-6 py-8 text-center flex-shrink-0
+                w-64
+                rounded-xl
+                bg-white/5
+                border border-white/10
+                px-6 py-6
+                text-center
+                flex-shrink-0
               "
             >
               <div className="relative mb-5 flex justify-center">
@@ -99,7 +104,7 @@ export function Mentors() {
                 rel="noopener noreferrer"
                 className="
                   inline-flex items-center gap-2
-                  rounded-full
+                  rounded-md
                   border border-white/20
                   bg-white/5
                   px-4 py-1.5
@@ -128,12 +133,12 @@ export function Mentors() {
               transition={{ duration: 0.3, delay: i * 0.08 }}
               whileHover={{ scale: 1.02 }}
               className="
-                h-[420px]
-                rounded-3xl
+                h-[400px]
+                rounded-xl
                 bg-white/5
                 border border-white/10
                 flex flex-col items-center
-                pt-10 px-8
+                pt-8 px-8
                 transition-transform duration-150 ease-out
               "
             >
@@ -160,7 +165,7 @@ export function Mentors() {
                 className="
                   mt-auto mb-8
                   inline-flex items-center gap-2
-                  rounded-full
+                  rounded-md
                   border border-white/20
                   bg-white/5
                   px-6 py-2
