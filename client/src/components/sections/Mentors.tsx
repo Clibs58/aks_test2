@@ -22,6 +22,13 @@ const mentors = [
     image: "/mentors/rachit.jpg",
     profile: "https://www.linkedin.com/in/rachit-kumar",
   },
+  {  
+    id: "03",
+    name: "Rachit Kumar",
+    role: "Head — GTM & Payments AI @ LinkedIn",
+    image: "/mentors/rachit.jpg",
+    profile: "https://www.linkedin.com/in/rachit-kumar",
+  },
 ];
 
 export function Mentors() {
