@@ -110,9 +110,9 @@ export function Mentors() {
                   px-4 py-1.5
                   text-sm font-medium text-white
                   transition-all duration-300
-                  hover:bg-[#0b5cff]
-                  hover:border-[#0b5cff]
-                  hover:shadow-[0_0_20px_rgba(11,92,255,0.6)]
+                  hover:bg-[#0B1F33]
+                  hover:border-[#0B1F33]
+                  hover:shadow-[0_0_20px_rgba(11,31,51,0.6)]
                 "
               >
                 View Profile →
@@ -168,9 +168,9 @@ export function Mentors() {
                   px-6 py-2
                   text-sm font-medium text-white
                   transition-all duration-300
-                  hover:bg-[#0b5cff]
-                  hover:border-[#0b5cff]
-                  hover:shadow-[0_0_25px_rgba(11,92,255,0.6)]
+                  hover:bg-[#0B1F33]
+                  hover:border-[#0B1F33]
+                  hover:shadow-[0_0_25px_rgba(11,31,51,0.6)]
                 "
               >
                 View Profile →
