@@ -68,7 +68,6 @@ export function Mentors() {
 
       {/* ================= MOBILE MARQUEE ================= */}
       <div className="md:hidden relative">
-        {/* Fade edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
 
@@ -80,15 +79,7 @@ export function Mentors() {
           {[...mentors, ...mentors].map((mentor, i) => (
             <div
               key={i}
-              className="
-                w-64
-                rounded-3xl
-                bg-white/5
-                border border-white/10
-                px-6 py-8
-                text-center
-                flex-shrink-0
-              "
+              className="w-64 rounded-3xl bg-white/5 border border-white/10 px-6 py-8 text-center flex-shrink-0"
             >
               {/* Avatar */}
               <div className="relative mb-5 flex justify-center">
@@ -118,7 +109,10 @@ export function Mentors() {
                   bg-white/5
                   px-4 py-1.5
                   text-sm font-medium text-white
-                  hover:bg-white/10 transition
+                  transition-all duration-300
+                  hover:bg-[#0b5cff]
+                  hover:border-[#0b5cff]
+                  hover:shadow-[0_0_20px_rgba(11,92,255,0.6)]
                 "
               >
                 View Profile →
@@ -142,15 +136,7 @@ export function Mentors() {
                 scale: 1.03,
                 boxShadow: "0 0 40px rgba(255,255,255,0.15)",
               }}
-              className="
-                h-[420px]
-                rounded-3xl
-                bg-white/5
-                border border-white/10
-                flex flex-col items-center
-                pt-10 px-8
-                transition
-              "
+              className="h-[420px] rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center pt-10 px-8 transition"
             >
               {/* Avatar */}
               <div className="relative mb-6">
@@ -181,8 +167,10 @@ export function Mentors() {
                   bg-white/5
                   px-6 py-2
                   text-sm font-medium text-white
-                  hover:bg-white/10 hover:border-white/40
-                  transition
+                  transition-all duration-300
+                  hover:bg-[#0b5cff]
+                  hover:border-[#0b5cff]
+                  hover:shadow-[0_0_25px_rgba(11,92,255,0.6)]
                 "
               >
                 View Profile →
