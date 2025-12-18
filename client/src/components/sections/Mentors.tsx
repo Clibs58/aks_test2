@@ -16,10 +16,10 @@ const mentors = [
   },
   {
     id: "02",
-    name: "John Edwards",
-    role: "Founder @ Calvaryrobe Regals",
-    image: "/mentors/john.jpg",
-    profile: "https://www.linkedin.com/in/johnedwards",
+    name: "Vineet Yadav",
+    role: "Founder @ SleekandPeek",
+    image: "vineet.jpg",
+    profile: "https://www.linkedin.com/in/vineet-yadav-1b86771b7/",
   },
   {
     id: "03",
