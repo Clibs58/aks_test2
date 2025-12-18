@@ -9,10 +9,10 @@ import { useEffect } from "react";
 const mentors = [
   {
     id: "01",
-    name: "Abhishek R",
-    role: "CEO @ Neoviz Technologies Pvt. Ltd.",
-    image: "Abhishek.jpg",
-    profile: "https://www.linkedin.com/in/abhishekrana",
+    name: "Saiprasad Pandilwar",
+    role: "Founder @ MyPerro",
+    image: "sai_perro.jpg",
+    profile: "https://www.linkedin.com/in/saiprasadpandilwar/",
   },
   {
     id: "02",
