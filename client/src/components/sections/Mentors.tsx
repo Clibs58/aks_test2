@@ -10,10 +10,10 @@ import { useEffect } from "react";
 const mentors = [
   {
     id: "01",
-    name: "Sai Pandilwar",
+    name: "Saiprasad Pandilwar",
     role: "Founder @ MyPerro",
     image: "sai_perro.jpg",
-    profile: "",
+    profile: "https://www.linkedin.com/in/saiprasadpandilwar/",
   },
   {
     id: "02",
