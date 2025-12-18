@@ -6,7 +6,6 @@ const mentors = [
     name: "Abhishek R",
     role: "CEO @ Neoviz Technologies Pvt. Ltd.",
     image: "Abhishek.jpg",
-    quote: "Great products are built by teams who care deeply about users.",
     profile: "https://www.linkedin.com/in/abhishekrana",
   },
   {
@@ -14,7 +13,6 @@ const mentors = [
     name: "John Edwards",
     role: "Founder @ Calvaryrobe Regals",
     image: "/mentors/john.jpg",
-    quote: "Execution beats ideas. Build fast, learn faster.",
     profile: "https://www.linkedin.com/in/johnedwards",
   },
   {
@@ -22,7 +20,6 @@ const mentors = [
     name: "Rachit Kumar",
     role: "Head — GTM & Payments AI @ LinkedIn",
     image: "/mentors/rachit.jpg",
-    quote: "Clarity in thinking leads to speed in execution.",
     profile: "https://www.linkedin.com/in/rachit-kumar",
   },
   {
@@ -30,7 +27,6 @@ const mentors = [
     name: "Partho Ghosh",
     role: "Scientist @ ISRO",
     image: "/mentors/partho.jpg",
-    quote: "Precision, patience, and persistence define success.",
     profile: "https://www.linkedin.com/in/partho-ghosh",
   },
   {
@@ -38,7 +34,6 @@ const mentors = [
     name: "Josh Praveen",
     role: "VP @ SnapMenu",
     image: "/mentors/josh.jpg",
-    quote: "Scale comes from systems, not heroics.",
     profile: "https://www.linkedin.com/in/josh-praveen",
   },
   {
@@ -46,7 +41,6 @@ const mentors = [
     name: "Lalit Mohan",
     role: "ICF CFA — IRS",
     image: "/mentors/lalit.jpg",
-    quote: "Discipline compounds faster than motivation.",
     profile: "https://www.linkedin.com/in/lalit-mohan",
   },
 ];
@@ -55,7 +49,6 @@ export function Mentors() {
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
       <div className="container px-6 mx-auto">
-        {/* Heading */}
         <div className="mb-20 max-w-2xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Our Mentors
@@ -79,9 +72,11 @@ export function Mentors() {
           {[...mentors, ...mentors].map((mentor, i) => (
             <div
               key={i}
-              className="w-64 rounded-3xl bg-white/5 border border-white/10 px-6 py-8 text-center flex-shrink-0"
+              className="
+                w-64 rounded-3xl bg-white/5 border border-white/10
+                px-6 py-8 text-center flex-shrink-0
+              "
             >
-              {/* Avatar */}
               <div className="relative mb-5 flex justify-center">
                 <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
@@ -109,10 +104,9 @@ export function Mentors() {
                   bg-white/5
                   px-4 py-1.5
                   text-sm font-medium text-white
-                  transition-all duration-300
+                  transition-colors duration-150 ease-out
                   hover:bg-[#0B1F33]
                   hover:border-[#0B1F33]
-                  hover:shadow-[0_0_20px_rgba(11,31,51,0.6)]
                 "
               >
                 View Profile →
@@ -128,17 +122,21 @@ export function Mentors() {
           {mentors.map((mentor, i) => (
             <motion.div
               key={mentor.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0 0 40px rgba(255,255,255,0.15)",
-              }}
-              className="h-[420px] rounded-3xl bg-white/5 border border-white/10 flex flex-col items-center pt-10 px-8 transition"
+              transition={{ duration: 0.3, delay: i * 0.08 }}
+              whileHover={{ scale: 1.02 }}
+              className="
+                h-[420px]
+                rounded-3xl
+                bg-white/5
+                border border-white/10
+                flex flex-col items-center
+                pt-10 px-8
+                transition-transform duration-150 ease-out
+              "
             >
-              {/* Avatar */}
               <div className="relative mb-6">
                 <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
@@ -167,10 +165,9 @@ export function Mentors() {
                   bg-white/5
                   px-6 py-2
                   text-sm font-medium text-white
-                  transition-all duration-300
+                  transition-colors duration-150 ease-out
                   hover:bg-[#0B1F33]
                   hover:border-[#0B1F33]
-                  hover:shadow-[0_0_25px_rgba(11,31,51,0.6)]
                 "
               >
                 View Profile →
