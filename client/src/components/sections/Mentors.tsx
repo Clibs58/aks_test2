@@ -20,7 +20,7 @@ const mentors = [
     name: "Vineet Yadav"",
     role: "Founder @ SleekandPeek",
     image: "vineet.jpg",
-    profile: "https://www.linkedin.com/in/vineet-yadav-1b86771b7/",
+    profile: "https://www.linkedin.com/in/vineet-yadav-1b86771b7",
   },
   {
     id: "03",
