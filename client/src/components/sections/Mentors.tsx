@@ -76,70 +76,66 @@ export function Mentors() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="relative h-[420px] flex justify-center group overflow-hidden"
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 0 40px rgba(255,255,255,0.15)",
+              }}
+              className="
+                relative
+                h-[420px]
+                rounded-3xl
+                bg-white/5
+                border border-white/10
+                flex flex-col items-center
+                pt-10
+                px-8
+                transition
+              "
             >
-              {/* ===== CARD (hidden until hover) ===== */}
-              <div
-                className="
-                  absolute bottom-0
-                  w-[320px] h-[360px]
-                  rounded-3xl
-                  bg-white/5 border border-white/10
-                  opacity-0 scale-95 translate-y-6
-                  group-hover:opacity-100
-                  group-hover:scale-100
-                  group-hover:translate-y-0
-                  transition-all duration-300 ease-out
-                  shadow-[0_0_40px_rgba(255,255,255,0.12)]
-                  flex flex-col items-center
-                  pt-24 pb-10
-                "
-              >
-                <h3 className="text-2xl font-semibold text-white mb-2">
-                  {mentor.name}
-                </h3>
-                <p className="text-gray-400 text-center px-6">
-                  {mentor.role}
-                </p>
-
-                <a
-                  href={mentor.profile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    mt-6 inline-flex items-center gap-2
-                    rounded-full border border-white/20
-                    bg-white/5 px-5 py-2
-                    text-sm font-medium text-white
-                    hover:bg-white/10 hover:border-white/40 transition
-                  "
-                >
-                  View Profile →
-                </a>
-              </div>
-
-              {/* ===== AVATAR (always visible) ===== */}
-              <div
-                className="
-                  relative z-10
-                  transition-transform duration-300
-                  group-hover:-translate-y-4
-                "
-              >
-                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30 opacity-0 group-hover:opacity-100 transition" />
+              {/* ===== AVATAR (INSIDE CARD) ===== */}
+              <div className="relative mb-6">
+                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
                   src={mentor.image}
                   alt={mentor.name}
-                  className="h-32 w-32 rounded-full object-cover border border-white/20"
+                  className="relative z-10 h-28 w-28 rounded-full object-cover border border-white/20"
                 />
               </div>
+
+              {/* ===== TEXT ===== */}
+              <h3 className="text-2xl font-semibold text-white mb-2 text-center">
+                {mentor.name}
+              </h3>
+              <p className="text-gray-400 text-center mb-6">
+                {mentor.role}
+              </p>
+
+              {/* ===== CTA ===== */}
+              <a
+                href={mentor.profile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  mt-auto mb-8
+                  inline-flex items-center gap-2
+                  rounded-full
+                  border border-white/20
+                  bg-white/5
+                  px-6 py-2
+                  text-sm font-medium text-white
+                  hover:bg-white/10 hover:border-white/40
+                  transition
+                "
+              >
+                View Profile →
+              </a>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* ================= MOBILE MARQUEE (UNCHANGED) ================= */}
-      {/* keep your existing mobile marquee code exactly as-is */}
+      {/* ================= MOBILE MARQUEE ================= */}
+      {/* Keep your existing mobile marquee code unchanged */}
     </section>
   );
 }
