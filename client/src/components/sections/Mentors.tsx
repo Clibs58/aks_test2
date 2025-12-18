@@ -7,6 +7,7 @@ const mentors = [
     role: "CEO @ Neoviz Technologies Pvt. Ltd.",
     image: "Abhishek.jpg",
     quote: "Great products are built by teams who care deeply about users.",
+    profile: "https://www.linkedin.com/in/abhishekrana", // example
   },
   {
     id: "02",
@@ -14,6 +15,7 @@ const mentors = [
     role: "Founder @ Calvaryrobe Regals",
     image: "/mentors/john.jpg",
     quote: "Execution beats ideas. Build fast, learn faster.",
+    profile: "https://www.linkedin.com/in/johnedwards",
   },
   {
     id: "03",
@@ -21,6 +23,7 @@ const mentors = [
     role: "Head — GTM & Payments AI @ LinkedIn",
     image: "/mentors/rachit.jpg",
     quote: "Clarity in thinking leads to speed in execution.",
+    profile: "https://www.linkedin.com/in/rachit-kumar",
   },
   {
     id: "04",
@@ -28,6 +31,7 @@ const mentors = [
     role: "Scientist @ ISRO",
     image: "/mentors/partho.jpg",
     quote: "Precision, patience, and persistence define success.",
+    profile: "https://www.linkedin.com/in/partho-ghosh",
   },
   {
     id: "05",
@@ -35,6 +39,7 @@ const mentors = [
     role: "VP @ SnapMenu",
     image: "/mentors/josh.jpg",
     quote: "Scale comes from systems, not heroics.",
+    profile: "https://www.linkedin.com/in/josh-praveen",
   },
   {
     id: "06",
@@ -42,6 +47,7 @@ const mentors = [
     role: "ICF CFA — IRS",
     image: "/mentors/lalit.jpg",
     quote: "Discipline compounds faster than motivation.",
+    profile: "https://www.linkedin.com/in/lalit-mohan",
   },
 ];
 
@@ -51,9 +57,7 @@ export function Mentors() {
       <div className="container px-6 mx-auto">
         {/* Heading */}
         <div className="mb-20 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Our Mentors
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Mentors</h2>
           <p className="text-gray-400 text-lg">
             Guidance from industry leaders shaping the next generation of builders.
           </p>
@@ -62,24 +66,16 @@ export function Mentors() {
 
       {/* ================= MOBILE MARQUEE ================= */}
       <div className="md:hidden relative">
-        {/* fade edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
 
         <motion.div
           className="flex gap-16 w-max px-6"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 25,
-            ease: "linear",
-            repeat: Infinity,
-          }}
+          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
         >
           {[...mentors, ...mentors].map((mentor, i) => (
-            <div
-              key={i}
-              className="relative group flex-shrink-0 w-56 text-center"
-            >
+            <div key={i} className="relative group flex-shrink-0 w-56 text-center">
               {/* Quote */}
               <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                 <div className="rounded-xl bg-[#0b1220] border border-white/10 p-4 text-sm text-gray-200 shadow-xl">
@@ -97,12 +93,17 @@ export function Mentors() {
                 />
               </div>
 
-              <h3 className="text-lg font-semibold text-white">
-                {mentor.name}
-              </h3>
-              <p className="text-sm text-gray-400 mt-1">
-                {mentor.role}
-              </p>
+              <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
+              <p className="text-sm text-gray-400 mt-1">{mentor.role}</p>
+
+              <a
+                href={mentor.profile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1 text-sm text-accent"
+              >
+                View Profile →
+              </a>
             </div>
           ))}
         </motion.div>
@@ -140,9 +141,19 @@ export function Mentors() {
               <h3 className="text-2xl font-semibold text-white mb-2">
                 {mentor.name}
               </h3>
-              <p className="text-gray-400">
-                {mentor.role}
-              </p>
+              <p className="text-gray-400">{mentor.role}</p>
+
+              <a
+                href={mentor.profile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm text-accent
+                           opacity-0 translate-y-2
+                           group-hover:opacity-100 group-hover:translate-y-0
+                           transition-all duration-300"
+              >
+                View Profile →
+              </a>
             </motion.div>
           ))}
         </div>
