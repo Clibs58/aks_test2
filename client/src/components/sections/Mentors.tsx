@@ -49,6 +49,7 @@ export function Mentors() {
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
       <div className="container px-6 mx-auto">
+        {/* Heading */}
         <div className="mb-20 max-w-2xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Our Mentors
@@ -73,13 +74,9 @@ export function Mentors() {
             <div
               key={i}
               className="
-                w-64
-                rounded-xl
-                bg-white/5
-                border border-white/10
-                px-6 py-6
-                text-center
-                flex-shrink-0
+                w-64 rounded-xl
+                bg-white/5 border border-white/10
+                px-6 py-6 text-center flex-shrink-0
               "
             >
               <div className="relative mb-5 flex justify-center">
@@ -104,10 +101,8 @@ export function Mentors() {
                 rel="noopener noreferrer"
                 className="
                   inline-flex items-center gap-2
-                  rounded-md
-                  border border-white/20
-                  bg-white/5
-                  px-4 py-1.5
+                  rounded-md border border-white/20
+                  bg-white/5 px-4 py-1.5
                   text-sm font-medium text-white
                   transition-colors duration-150 ease-out
                   hover:bg-[#0B1F33]
@@ -123,7 +118,16 @@ export function Mentors() {
 
       {/* ================= DESKTOP GRID ================= */}
       <div className="hidden md:block container px-6 mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-32">
+        <div
+          className="
+            grid
+            gap-x-20 gap-y-32
+            justify-items-center
+            [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
+            max-w-[1200px]
+            mx-auto
+          "
+        >
           {mentors.map((mentor, i) => (
             <motion.div
               key={mentor.id}
@@ -133,10 +137,9 @@ export function Mentors() {
               transition={{ duration: 0.3, delay: i * 0.08 }}
               whileHover={{ scale: 1.02 }}
               className="
-                h-[400px]
+                h-[400px] w-full max-w-[320px]
                 rounded-xl
-                bg-white/5
-                border border-white/10
+                bg-white/5 border border-white/10
                 flex flex-col items-center
                 pt-8 px-8
                 transition-transform duration-150 ease-out
@@ -165,10 +168,8 @@ export function Mentors() {
                 className="
                   mt-auto mb-8
                   inline-flex items-center gap-2
-                  rounded-md
-                  border border-white/20
-                  bg-white/5
-                  px-6 py-2
+                  rounded-md border border-white/20
+                  bg-white/5 px-6 py-2
                   text-sm font-medium text-white
                   transition-colors duration-150 ease-out
                   hover:bg-[#0B1F33]
