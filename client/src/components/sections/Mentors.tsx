@@ -30,8 +30,8 @@ const mentors = [
   },
   {
     id: "04",
-    name: "Partho Ghosh",
-    role: "Scientist @ ISRO",
+    name: "Havish Karanam",
+    role: "Founder @ XIBOTIX",
     image: "/mentors/partho.jpg",
     profile: "https://www.linkedin.com/in/partho-ghosh",
   },
