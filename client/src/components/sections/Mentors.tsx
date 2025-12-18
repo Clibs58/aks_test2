@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { useEffect } from "react";
 
 const mentors = [
   {
@@ -46,140 +47,144 @@ const mentors = [
 ];
 
 export function Mentors() {
+  /* ================= CURSOR REACTIVE BACKGROUND ================= */
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const background = useMotionTemplate`
+    radial-gradient(
+      600px circle at ${mouseX}px ${mouseY}px,
+      rgba(11,31,51,0.25),
+      transparent 65%
+    )
+  `;
+
   return (
-    <section id="mentors" className="relative py-32 bg-black overflow-hidden">
-      <div className="container px-6 mx-auto">
-        {/* Heading */}
-        <div className="mb-20 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Our Mentors
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Guidance from industry leaders shaping the next generation of builders.
-          </p>
+    <section
+      id="mentors"
+      className="relative py-32 bg-black overflow-hidden"
+    >
+      {/* ===== LIVE WALLPAPER (DESKTOP ONLY) ===== */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        style={{ background }}
+      />
+
+      <div className="relative z-10">
+        <div className="container px-6 mx-auto">
+          {/* Heading */}
+          <div className="mb-20 max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Our Mentors
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Guidance from industry leaders shaping the next generation of builders.
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* ================= MOBILE MARQUEE ================= */}
-      <div className="md:hidden relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
+        {/* ================= MOBILE MARQUEE ================= */}
+        <div className="md:hidden relative">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
 
-        <motion.div
-          className="flex gap-6 w-max px-6"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-        >
-          {[...mentors, ...mentors].map((mentor, i) => (
-            <div
-              key={i}
-              className="
-                w-64 rounded-xl
-                bg-white/5 border border-white/10
-                px-6 py-6 text-center flex-shrink-0
-              "
-            >
-              <div className="relative mb-5 flex justify-center">
-                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
-                <img
-                  src={mentor.image}
-                  alt={mentor.name}
-                  className="relative z-10 h-20 w-20 rounded-full object-cover border border-white/20"
-                />
-              </div>
-
-              <h3 className="text-lg font-semibold text-white">
-                {mentor.name}
-              </h3>
-              <p className="text-sm text-gray-400 mt-1 mb-4">
-                {mentor.role}
-              </p>
-
-              <a
-                href={mentor.profile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  inline-flex items-center gap-2
-                  rounded-md border border-white/20
-                  bg-white/5 px-4 py-1.5
-                  text-sm font-medium text-white
-                  transition-colors duration-150 ease-out
-                  hover:bg-[#0B1F33]
-                  hover:border-[#0B1F33]
-                "
+          <motion.div
+            className="flex gap-6 w-max px-6"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+          >
+            {[...mentors, ...mentors].map((mentor, i) => (
+              <div
+                key={i}
+                className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0"
               >
-                View Profile →
-              </a>
-            </div>
-          ))}
-        </motion.div>
-      </div>
+                <div className="relative mb-5 flex justify-center">
+                  <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
+                  <img
+                    src={mentor.image}
+                    alt={mentor.name}
+                    className="relative z-10 h-20 w-20 rounded-full object-cover border border-white/20"
+                  />
+                </div>
 
-      {/* ================= DESKTOP GRID ================= */}
-      <div className="hidden md:block container px-6 mx-auto">
-        <div
-          className="
-            grid
-            gap-x-20 gap-y-32
-            justify-items-center
-            [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
-            max-w-[1200px]
-            mx-auto
-          "
-        >
-          {mentors.map((mentor, i) => (
-            <motion.div
-              key={mentor.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.08 }}
-              whileHover={{ scale: 1.02 }}
-              className="
-                h-[400px] w-full max-w-[320px]
-                rounded-xl
-                bg-white/5 border border-white/10
-                flex flex-col items-center
-                pt-8 px-8
-                transition-transform duration-150 ease-out
-              "
-            >
-              <div className="relative mb-6">
-                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
-                <img
-                  src={mentor.image}
-                  alt={mentor.name}
-                  className="relative z-10 h-28 w-28 rounded-full object-cover border border-white/20"
-                />
+                <h3 className="text-lg font-semibold text-white">
+                  {mentor.name}
+                </h3>
+                <p className="text-sm text-gray-400 mt-1 mb-4">
+                  {mentor.role}
+                </p>
+
+                <a
+                  href={mentor.profile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-white hover:bg-[#0B1F33] hover:border-[#0B1F33] transition-colors duration-150 ease-out"
+                >
+                  View Profile →
+                </a>
               </div>
+            ))}
+          </motion.div>
+        </div>
 
-              <h3 className="text-2xl font-semibold text-white mb-2 text-center">
-                {mentor.name}
-              </h3>
-              <p className="text-gray-400 text-center mb-6">
-                {mentor.role}
-              </p>
-
-              <a
-                href={mentor.profile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  mt-auto mb-8
-                  inline-flex items-center gap-2
-                  rounded-md border border-white/20
-                  bg-white/5 px-6 py-2
-                  text-sm font-medium text-white
-                  transition-colors duration-150 ease-out
-                  hover:bg-[#0B1F33]
-                  hover:border-[#0B1F33]
-                "
+        {/* ================= DESKTOP GRID ================= */}
+        <div className="hidden md:block container px-6 mx-auto">
+          <div
+            className="
+              grid gap-x-20 gap-y-32
+              justify-items-center
+              [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
+              max-w-[1200px] mx-auto
+            "
+          >
+            {mentors.map((mentor, i) => (
+              <motion.div
+                key={mentor.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.08 }}
+                whileHover={{ scale: 1.02 }}
+                className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8 transition-transform duration-150 ease-out"
               >
-                View Profile →
-              </a>
-            </motion.div>
-          ))}
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
+                  <img
+                    src={mentor.image}
+                    alt={mentor.name}
+                    className="relative z-10 h-28 w-28 rounded-full object-cover border border-white/20"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-semibold text-white mb-2 text-center">
+                  {mentor.name}
+                </h3>
+                <p className="text-gray-400 text-center mb-6">
+                  {mentor.role}
+                </p>
+
+                <a
+                  href={mentor.profile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto mb-8 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm font-medium text-white hover:bg-[#0B1F33] hover:border-[#0B1F33] transition-colors duration-150 ease-out"
+                >
+                  View Profile →
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
