@@ -79,10 +79,15 @@ export function Mentors() {
           {[...mentors, ...mentors].map((mentor, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{
+                scale: 1.05,
+                borderColor: "rgba(255,255,255,0.6)",
+                boxShadow: "0 0 35px rgba(255,255,255,0.25)",
+              }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               className="relative flex-shrink-0 w-56 text-center
-                         rounded-2xl bg-white/5 border border-white/10
+                         rounded-2xl bg-white/5
+                         border border-white/10
                          px-6 py-8"
             >
               {/* Quote */}
@@ -135,13 +140,15 @@ export function Mentors() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 40px rgba(255,255,255,0.15)",
+                scale: 1.06,
+                borderColor: "rgba(255,255,255,0.6)",
+                boxShadow: "0 0 45px rgba(255,255,255,0.25)",
               }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.12 }}
+              transition={{ duration: 0.45, delay: i * 0.12 }}
               className="relative flex flex-col items-center text-center
-                         rounded-3xl bg-white/5 border border-white/10
+                         rounded-3xl bg-white/5
+                         border border-white/10
                          px-8 py-10"
             >
               {/* Quote */}
