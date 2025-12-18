@@ -66,6 +66,68 @@ export function Mentors() {
         </div>
       </div>
 
+      {/* ================= MOBILE MARQUEE ================= */}
+      <div className="md:hidden relative">
+        {/* Fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
+
+        <motion.div
+          className="flex gap-6 w-max px-6"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 28, ease: "linear", repeat: Infinity }}
+        >
+          {[...mentors, ...mentors].map((mentor, i) => (
+            <div
+              key={i}
+              className="
+                w-64
+                rounded-3xl
+                bg-white/5
+                border border-white/10
+                px-6 py-8
+                text-center
+                flex-shrink-0
+              "
+            >
+              {/* Avatar */}
+              <div className="relative mb-5 flex justify-center">
+                <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
+                <img
+                  src={mentor.image}
+                  alt={mentor.name}
+                  className="relative z-10 h-20 w-20 rounded-full object-cover border border-white/20"
+                />
+              </div>
+
+              <h3 className="text-lg font-semibold text-white">
+                {mentor.name}
+              </h3>
+              <p className="text-sm text-gray-400 mt-1 mb-4">
+                {mentor.role}
+              </p>
+
+              <a
+                href={mentor.profile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex items-center gap-2
+                  rounded-full
+                  border border-white/20
+                  bg-white/5
+                  px-4 py-1.5
+                  text-sm font-medium text-white
+                  hover:bg-white/10 transition
+                "
+              >
+                View Profile →
+              </a>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
       {/* ================= DESKTOP GRID ================= */}
       <div className="hidden md:block container px-6 mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-32">
@@ -81,18 +143,16 @@ export function Mentors() {
                 boxShadow: "0 0 40px rgba(255,255,255,0.15)",
               }}
               className="
-                relative
                 h-[420px]
                 rounded-3xl
                 bg-white/5
                 border border-white/10
                 flex flex-col items-center
-                pt-10
-                px-8
+                pt-10 px-8
                 transition
               "
             >
-              {/* ===== AVATAR (INSIDE CARD) ===== */}
+              {/* Avatar */}
               <div className="relative mb-6">
                 <div className="absolute inset-0 rounded-full blur-xl bg-accent/30" />
                 <img
@@ -102,7 +162,6 @@ export function Mentors() {
                 />
               </div>
 
-              {/* ===== TEXT ===== */}
               <h3 className="text-2xl font-semibold text-white mb-2 text-center">
                 {mentor.name}
               </h3>
@@ -110,7 +169,6 @@ export function Mentors() {
                 {mentor.role}
               </p>
 
-              {/* ===== CTA ===== */}
               <a
                 href={mentor.profile}
                 target="_blank"
@@ -133,9 +191,6 @@ export function Mentors() {
           ))}
         </div>
       </div>
-
-      {/* ================= MOBILE MARQUEE ================= */}
-      {/* Keep your existing mobile marquee code unchanged */}
     </section>
   );
 }
