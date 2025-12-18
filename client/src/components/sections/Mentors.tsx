@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { useEffect } from "react";
 
+/* ================= MENTORS DATA ================= */
 const mentors = [
   {
     id: "01",
@@ -51,8 +52,11 @@ const mentors = [
   },
 ];
 
+/* ================= PARTICLES ================= */
+const particles = Array.from({ length: 22 });
+
 export function Mentors() {
-  /* ================= CURSOR VALUES ================= */
+  /* ================= CURSOR ================= */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -65,7 +69,6 @@ export function Mentors() {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
-
     window.addEventListener("mousemove", move);
 
     animate(ambientX, [20, 80, 20], {
@@ -73,7 +76,6 @@ export function Mentors() {
       repeat: Infinity,
       ease: "easeInOut",
     });
-
     animate(ambientY, [30, 70, 30], {
       duration: 22,
       repeat: Infinity,
@@ -83,29 +85,26 @@ export function Mentors() {
     return () => window.removeEventListener("mousemove", move);
   }, [mouseX, mouseY, ambientX, ambientY]);
 
-  /* ================= BACKGROUND LAYERS ================= */
-
-  // Strong cursor spotlight
+  /* ================= BACKGROUND GLOWS ================= */
   const spotlight = useMotionTemplate`
     radial-gradient(
-      500px circle at ${mouseX}px ${mouseY}px,
-      rgba(11,31,51,0.45),
+      520px circle at ${mouseX}px ${mouseY}px,
+      rgba(8,26,43,0.45),
       transparent 65%
     )
   `;
 
-  // Ambient breathing glow
   const ambientGlow = useMotionTemplate`
     radial-gradient(
-      800px circle at ${ambientX}% ${ambientY}%,
-      rgba(11,31,51,0.25),
+      900px circle at ${ambientX}% ${ambientY}%,
+      rgba(8,26,43,0.28),
       transparent 70%
     )
   `;
 
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
-      {/* ================= EXPRESSIVE LIVE WALLPAPER ================= */}
+      {/* ================= LIVE WALLPAPER ================= */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden md:block"
@@ -116,6 +115,46 @@ export function Mentors() {
         className="pointer-events-none absolute inset-0 hidden md:block mix-blend-screen"
         style={{ background: spotlight }}
       />
+
+      {/* ================= SHIMMER PARTICLES ================= */}
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
+        {particles.map((_, i) => {
+          const size = Math.random() * 3 + 2;
+          const x = Math.random() * 100;
+          const y = Math.random() * 100;
+          const duration = Math.random() * 10 + 12;
+
+          return (
+            <motion.span
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: size,
+                height: size,
+                background: "#081A2B",
+                left: `${x}%`,
+                top: `${y}%`,
+                opacity: 0.6,
+              }}
+              animate={{
+                y: ["0%", "-120%"],
+                opacity: [0.2, 0.8, 0.2],
+                x: [
+                  0,
+                  (i % 2 === 0 ? 1 : -1) * 30,
+                  0,
+                ],
+              }}
+              transition={{
+                duration,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 5,
+              }}
+            />
+          );
+        })}
+      </div>
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10">
@@ -130,42 +169,6 @@ export function Mentors() {
           </div>
         </div>
 
-        {/* ================= MOBILE MARQUEE ================= */}
-        <div className="md:hidden relative">
-          <motion.div
-            className="flex gap-6 w-max px-6"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-          >
-            {[...mentors, ...mentors].map((mentor, i) => (
-              <div
-                key={i}
-                className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0"
-              >
-                <img
-                  src={mentor.image}
-                  alt={mentor.name}
-                  className="mx-auto mb-4 h-20 w-20 rounded-full object-cover border border-white/20"
-                />
-                <h3 className="text-lg font-semibold text-white">
-                  {mentor.name}
-                </h3>
-                <p className="text-sm text-gray-400 mb-4">
-                  {mentor.role}
-                </p>
-                <a
-                  href={mentor.profile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-md border border-white/20 bg-white/5 px-4 py-1.5 text-sm text-white hover:bg-[#0B1F33] transition-colors duration-150"
-                >
-                  View Profile →
-                </a>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
         {/* ================= DESKTOP GRID ================= */}
         <div className="hidden md:block container px-6 mx-auto">
           <div
@@ -176,13 +179,9 @@ export function Mentors() {
               max-w-[1200px] mx-auto
             "
           >
-            {mentors.map((mentor, i) => (
+            {mentors.map((mentor) => (
               <motion.div
                 key={mentor.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.08 }}
                 whileHover={{ scale: 1.03 }}
                 className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8"
               >
@@ -201,7 +200,7 @@ export function Mentors() {
                   href={mentor.profile}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto mb-8 inline-flex rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm text-white hover:bg-[#0B1F33] transition-colors duration-150"
+                  className="mt-auto mb-8 inline-flex rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm text-white hover:bg-[#081A2B] hover:border-[#081A2B] transition-colors duration-150"
                 >
                   View Profile →
                 </a>
