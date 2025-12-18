@@ -29,6 +29,13 @@ const mentors = [
     profile: "https://www.linkedin.com/in/rachit-kumar",
   },
   {
+    id: "04",
+    name: "Partho Ghosh",
+    role: "Scientist @ ISRO",
+    image: "/mentors/partho.jpg",
+    profile: "https://www.linkedin.com/in/partho-ghosh",
+  },
+  {
     id: "05",
     name: "Josh Praveen",
     role: "VP @ SnapMenu",
