@@ -23,10 +23,10 @@ const mentors = [
   },
   {
     id: "03",
-    name: "Rachit Kumar",
-    role: "Head — GTM & Payments AI @ LinkedIn",
-    image: "/mentors/rachit.jpg",
-    profile: "https://www.linkedin.com/in/rachit-kumar",
+    name: "Shrey Baldev",
+    role: "Founder @ Moon Finance",
+    image: "shrey.jpg",
+    profile: "https://www.linkedin.com/in/shreybaldev/",
   },
   {
     id: "04",
