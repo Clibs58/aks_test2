@@ -18,21 +18,21 @@ const mentors = [
     id: "02",
     name: "Vineet Yadav",
     role: "Founder @ SleekandPeek",
-    image: "vineet.jpg",
+    image: "/mentors/vineet.jpg",
     profile: "https://www.linkedin.com/in/vineet-yadav-1b86771b7/",
   },
   {
     id: "03",
     name: "Shrey Baldev",
     role: "Founder @ Moon Finance",
-    image: "mentors/shrey.jpg",
+    image: "/mentors/shrey.jpg",
     profile: "https://www.linkedin.com/in/shreybaldev/",
   },
   {
     id: "04",
     name: "Havish Karanam",
     role: "Founder @ XIBOTIX",
-    image: "havish.jpg",
+    image: "/mentors/havish.jpg",
     profile: "https://www.linkedin.com/in/havish-karanam-91590a1b9/",
   },
   {
@@ -50,6 +50,7 @@ const mentors = [
     profile: "https://www.linkedin.com/in/lalit-mohan",
   },
 ];
+
 
 export function Mentors() {
   /* ================= CURSOR VALUES ================= */
