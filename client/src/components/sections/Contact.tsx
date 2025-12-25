@@ -3,20 +3,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Who can work with AKS?",
-    a: "We work with student founders, early-stage startups, and builders who want to ship real products.",
+    q: "What exactly does AKS do?",
+    a: "AKS helps student-led and early-stage startups turn ideas into real, usable products. AKS works on product strategy, execution, and go-to-market as an embedded product team rather than an external consultancy.",
   },
   {
-    q: "Do you provide mentorship or execution?",
-    a: "Both. We act as an embedded product team — from strategy to execution and launch.",
+    q: "Is AKS a consultancy or a startup studio?",
+    a: "AKS is neither a traditional consultancy nor a startup studio. AKS operates as a product leadership ecosystem, embedding with teams to build products while also developing AKS-owned products alongside founder collaborations.",
   },
   {
-    q: "Is this suitable for first-time founders?",
-    a: "Absolutely. AKS is built founder-first and is especially helpful for first-time builders.",
+    q: "What stage startups does AKS usually work with?",
+    a: "AKS primarily works with idea-stage to early-revenue startups, especially where product direction lacks clarity or execution needs strong structure.",
   },
   {
-    q: "How do I get started?",
-    a: "Reach out to us via email or socials, and we’ll take it from there.",
+    q: "Does AKS build products end-to-end?",
+    a: "Yes. Depending on the engagement, AKS supports the entire product lifecycle—from discovery and strategy to execution and launch—working closely with founders and internal tech teams.",
+  },
+  {
+    q: "How is AKS different from agencies or freelancers?",
+    a: "Agencies focus on task delivery and freelancers focus on feature delivery. AKS takes ownership of product direction and execution outcomes, operating with a product leadership mindset rather than a vendor approach.",
+  },
+  {
+    q: "Can students join AKS as interns?",
+    a: "Yes. AKS offers internships for students seeking hands-on experience working on real products, real teams, and real decision-making—not theoretical or classroom-style assignments.",
   },
 ];
 
