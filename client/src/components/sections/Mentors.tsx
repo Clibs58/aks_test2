@@ -32,7 +32,7 @@ const mentors = [
     id: "04",
     name: "Havish Karanam",
     role: "Founder @ XIBOTIX",
-    image: "/mentors/havish.jpg",
+    image: "client/public/mentors/havish.jpg",
     profile: "https://www.linkedin.com/in/havish-karanam-91590a1b9/",
   },
   {
