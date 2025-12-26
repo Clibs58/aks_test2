@@ -9,13 +9,12 @@ const logos = [
 ];
 
 export function ClientLogos() {
-  // duplicate 3× for seamless infinite loop
   const marquee = [...logos, ...logos, ...logos];
 
   return (
     <section
       id="portfolio"
-      className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden"
+      className="relative py-24 border-y border-white/5 bg-black/20 backdrop-blur-sm overflow-hidden"
     >
       <div className="container px-6 mx-auto">
         <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
