@@ -4,6 +4,16 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
+// word-by-word animation
+const wordVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
+  }),
+};
+
 export function Hero() {
   const heroBg = "/hero_bg.png";
 
@@ -24,6 +34,10 @@ export function Hero() {
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, [mouseX, mouseY]);
+
+  /* ---------- Split words but keep same formatting ---------- */
+  const line1 = "Turning Student".split(" ");
+  const line2 = "Ideas into Real Products".split(" ");
 
   return (
     <section
@@ -46,32 +60,59 @@ export function Hero() {
 
       {/* CONTENT */}
       <div className="container relative z-10 px-6 text-center max-w-5xl mx-auto">
-        {/* Heading — same styling, gentle float */}
+        
+        {/* ======= HEADING (word by word) ======= */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial="hidden"
+          animate="visible"
           className="text-5xl md:text-5xl lg:text-8xl font-bold font-heading leading-[1.1] tracking-tight mb-6"
         >
-          Turning Student <br />
-          <span className="text-gradient-blue">Ideas into Real Products</span>
+          {/* first line */}
+          {line1.map((word, i) => (
+            <motion.span
+              key={`l1_${i}`}
+              variants={wordVariants}
+              custom={i}
+              className="inline-block mr-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+
+          <br />
+
+          {/* second line w/ blue gradient span like before */}
+          {line2.map((word, i) => (
+            <motion.span
+              key={`l2_${i}`}
+              variants={wordVariants}
+              custom={i + line1.length}
+              className={`inline-block mr-2 ${
+                word === "Ideas" || word === "Products"
+                  ? "text-gradient-blue"
+                  : ""
+              }`}
+            >
+              {word}
+            </motion.span>
+          ))}
         </motion.h1>
 
-        {/* Subtitle — same styling */}
+        {/* ======= SUBTITLE (unchanged style) ======= */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           A product ecosystem built for early-stage founders.
         </motion.p>
 
-        {/* Button — unchanged */}
+        {/* ======= BUTTON (unchanged) ======= */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button
