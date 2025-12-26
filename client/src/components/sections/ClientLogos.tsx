@@ -17,8 +17,8 @@ export function ClientLogos() {
       className="relative py-24 border-y border-white/5 bg-black/20 backdrop-blur-sm overflow-hidden"
     >
       <div className="container px-6 mx-auto">
-        <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
-          Our Clients: Student-Led Startup
+        <p className="text-center text-sm text-gray-300 uppercase tracking-widest mb-12">
+          <span className="font-semibold">Our Clients:</span> Student-Led Startup
         </p>
       </div>
 
@@ -39,12 +39,12 @@ export function ClientLogos() {
           {marquee.map((src, i) => (
             <div
               key={i}
-              className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="flex items-center justify-center"
             >
               <img
                 src={src}
                 alt="Client logo"
-                className="h-20 md:h-28 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-20 md:h-28 w-auto object-contain"
               />
             </div>
           ))}
