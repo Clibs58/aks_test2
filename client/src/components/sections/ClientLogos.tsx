@@ -18,7 +18,7 @@ export function ClientLogos() {
     >
       <div className="container px-6 mx-auto">
         <p className="text-center text-sm text-gray-300 uppercase tracking-widest mb-12">
-          <span className="font-semibold">Our Clients:</span> Student-Led Startup
+          <span className="font-semibold">Our Clients:</span> Student-Led Startups
         </p>
       </div>
 
