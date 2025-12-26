@@ -19,7 +19,7 @@ export function ClientLogos() {
     >
       <div className="container px-6 mx-auto">
         <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
-          Trusted by Industry Leaders
+          Student-Led Startups
         </p>
       </div>
 
