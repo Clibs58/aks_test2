@@ -175,17 +175,17 @@ export function Mentors() {
         {showAll && (
           <div className="space-y-24 max-w-[1200px] mx-auto">
             <div>
-              <h3 className="text-3xl font-semibold text-white mb-10">Shark Tank Mentors</h3>
+              <h3 className="text-3xl font-semibold text-white mb-10">Shark Tank Featured Founders</h3>
               <MentorGrid list={sharkTankMentors} />
             </div>
 
             <div>
-              <h3 className="text-3xl font-semibold text-white mb-10">Industry Mentors</h3>
+              <h3 className="text-3xl font-semibold text-white mb-10">Industry-Backed Founders</h3>
               <MentorGrid list={industryMentors} />
             </div>
 
             <div>
-              <h3 className="text-3xl font-semibold text-white mb-10">VIT Mentors</h3>
+              <h3 className="text-3xl font-semibold text-white mb-10">VIT-Incubated Founders</h3>
               <MentorGrid list={vitMentors} />
             </div>
           </div>
