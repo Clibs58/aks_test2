@@ -132,7 +132,7 @@ export function Mentors() {
             dragElastic={0.15}
             animate={{ x: ["0%", "-50%"] }}
             transition={{
-              duration: 25,
+              duration: 18,   // <-- faster speed
               ease: "linear",
               repeat: Infinity,
             }}
@@ -144,7 +144,7 @@ export function Mentors() {
               el.style.animationPlayState = "paused";
               setTimeout(() => {
                 el.style.animationPlayState = "running";
-              }, 3000);
+              }, 3000); // resume after ~3 sec
             }}
           >
             {[...mentors, ...mentors].map((mentor, idx) => (
