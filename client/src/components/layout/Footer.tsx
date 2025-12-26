@@ -14,7 +14,7 @@ export function Footer() {
             />
 
             <p className="text-gray-400 max-w-sm">
-              Premium digital product studio crafting experiences for the modern web.
+              lorem ipsum set dotor.
             </p>
           </div>
 
