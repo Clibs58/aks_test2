@@ -23,8 +23,8 @@ export function Hero() {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 30 });
 
-  const bgX = useTransform(springX, [0, typeof window !== "undefined" ? window.innerWidth : 0], [-50, 50]);
-  const bgY = useTransform(springY, [0, typeof window !== "undefined" ? window.innerHeight : 0], [-50, 50]);
+  const bgX = useTransform(springX, [0, typeof window !== "undefined" ? window.innerWidth : 0], [-8, 8]);
+  const bgY = useTransform(springY, [0, typeof window !== "undefined" ? window.innerHeight : 0], [-8, 8]);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
