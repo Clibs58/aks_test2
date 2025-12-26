@@ -129,7 +129,7 @@ export function Navbar() {
         {/* Logo */}
         <div className="flex justify-start">
           <img
-            src="/aks_logo_website.svg"
+            src="/logo.png"
             alt="Logo"
             className="h-20 w-auto cursor-pointer"
             onClick={() => scrollToSection("home")}
