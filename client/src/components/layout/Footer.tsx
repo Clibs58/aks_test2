@@ -6,6 +6,8 @@ export function Footer() {
     >
       <div className="container px-6 mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
+          
+          {/* LOGO + DESCRIPTION */}
           <div className="col-span-2">
             <img
               src="/logo.png"
@@ -18,13 +20,14 @@ export function Footer() {
             </p>
           </div>
 
+          {/* SITEMAP */}
           <div>
             <h4 className="text-white font-semibold mb-4">Sitemap</h4>
             <ul className="space-y-2">
-              {["Work", "Process", "About", "Contact"].map((item) => (
+              {["Processes", "About"].map((item) => (
                 <li key={item}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={`#${item.toLowerCase()}`} // → #processes, #about
                     className="text-gray-500 hover:text-white transition-colors"
                   >
                     {item}
@@ -34,10 +37,11 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* SOCIALS */}
           <div>
             <h4 className="text-white font-semibold mb-4">Socials</h4>
             <ul className="space-y-2">
-              {["Twitter", "LinkedIn", "Instagram", "Dribbble"].map((item) => (
+              {["Twitter", "LinkedIn", "Instagram"].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
@@ -49,8 +53,10 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
         </div>
 
+        {/* FOOTER BOTTOM */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-sm text-gray-600">
           <p>&copy; {new Date().getFullYear()} AKS. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
