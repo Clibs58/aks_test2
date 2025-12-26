@@ -122,15 +122,23 @@ export function Mentors() {
         </button>
       </div>
 
-      {/* ===== MOBILE marquee ===== */}
+      {/* ===== MOBILE SWIPE ===== */}
       {!showAll && (
-        <div className="md:hidden relative mb-16 px-6">
-          <motion.div className="flex gap-6 w-max" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 28, repeat: Infinity, ease: "linear" }}>
-            {[...mentors, ...mentors].map((mentor, i) => (
-              <div key={i} className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0">
+        <div className="md:hidden relative mb-16 px-6 overflow-hidden">
+          <motion.div
+            className="flex gap-6"
+            drag="x"
+            dragConstraints={{ left: -((mentors.length - 1) * 260), right: 0 }}
+            dragElastic={0.2}
+          >
+            {mentors.map((mentor) => (
+              <div
+                key={mentor.id}
+                className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0 cursor-grab active:cursor-grabbing"
+              >
                 <img src={mentor.image} className="mx-auto mb-4 h-20 w-20 rounded-full object-cover border border-white/20" />
                 <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
-                <p className="text-sm text-gray-400 mb-4">{mentor.role}</p>
+                <p className="text-sm text-gray-400 mb-4 line-clamp-3">{mentor.role}</p>
                 <a href={mentor.profile} target="_blank" className="inline-flex rounded-md border border-white/20 bg-white/5 px-4 py-1.5 text-sm text-white hover:bg-[#0B1F33]">
                   View Profile →
                 </a>
