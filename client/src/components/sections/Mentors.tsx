@@ -22,7 +22,7 @@ const mentors = [
   { id: "08", name: "Harshita Mittal", role: "Founder @ Rulenine Studio", image: "/mentors/harshita_mittal.jpg", profile: "https://www.linkedin.com/in/harshitaa-mittal/" },
   { id: "09", name: "Vineet Yadav", role: "Founder @ SleekandPeek", image: "/mentors/vineet.jpg", profile: "https://www.linkedin.com/in/vineet-yadav-1b86771b7/" },
   { id: "10", name: "Saiprasad Pandilwar", role: "Founder @ MyPerro", image: "/mentors/sai_perro.jpg", profile: "https://www.linkedin.com/in/saiprasadpandilwar/" },
-  { id: "11", name: "Shrey Baldev", role: "Founder @ Moon Finance | NSRCEL IIM B incubatee", image: "/mentors/shrey.jpg", profile: "https://www.linkedin.com/in/shreybaldev/" },
+  { id: "11", name: "Shrey Baldev", role: "Founder @ Moon Finance | NSRCEL IIM B Incubatee", image: "/mentors/shrey.jpg", profile: "https://www.linkedin.com/in/shreybaldev/" },
   { id: "12", name: "Havish Karanam", role: "Founder & CEO @ XIBOTIX Pvt. Ltd.", image: "/mentors/havish.jpg", profile: "https://www.linkedin.com/in/havish-karanam-91590a1b9/" },
   { id: "13", name: "Ajith Sunny", role: "Co-Founder @ MetaShot | CMO @ Craste", image: "/mentors/ajith.jpg", profile: "https://www.linkedin.com/in/ajith-sunny-39b12456/" },
 ];
