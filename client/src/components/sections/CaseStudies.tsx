@@ -58,9 +58,7 @@ export function CaseStudies() {
                 </span>
               </h3>
 
-              <p className="text-gray-400 text-lg leading-relaxed">
-                Explain AKS identity, positioning, and long-term vision.
-              </p>
+              
             </div>
 
             {/* CONTENT */}
