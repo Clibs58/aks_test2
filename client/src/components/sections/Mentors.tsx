@@ -107,7 +107,6 @@ export function Mentors() {
   /* ================= CURSOR VALUES ================= */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
   const ambientX = useMotionValue(50);
   const ambientY = useMotionValue(50);
 
@@ -116,7 +115,6 @@ export function Mentors() {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
-
     window.addEventListener("mousemove", move);
 
     animate(ambientX, [10, 80, 10], {
@@ -124,7 +122,6 @@ export function Mentors() {
       repeat: Infinity,
       ease: "easeInOut",
     });
-
     animate(ambientY, [20, 70, 20], {
       duration: 22,
       repeat: Infinity,
@@ -147,10 +144,10 @@ export function Mentors() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + BATCH_SIZE) % mentors.length);
-    }, INTERVAL);
-
+    const timer = setInterval(
+      () => setIndex((prev) => (prev + BATCH_SIZE) % mentors.length),
+      INTERVAL
+    );
     return () => clearInterval(timer);
   }, []);
 
@@ -164,7 +161,6 @@ export function Mentors() {
 
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
-
       {/* ================= BACKGROUND ================= */}
       <motion.div
         aria-hidden
@@ -177,7 +173,7 @@ export function Mentors() {
         style={{ background: spotlight }}
       />
 
-      {/* ================= HEADING - LEFT ALIGNED ================= */}
+      {/* ================= HEADING (LEFT) ================= */}
       <div className="relative z-10 container px-6 mx-auto mb-20">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
           Our Mentors
@@ -217,8 +213,8 @@ export function Mentors() {
         </motion.div>
       </div>
 
-      {/* ================= DESKTOP CYCLING GRID ================= */}
-      <div className="hidden md:block container px-6 mx-auto">
+      {/* ================= DESKTOP CYCLING GRID (CENTERED) ================= */}
+      <div className="hidden md:block container px-6 mx-auto flex justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -229,7 +225,7 @@ export function Mentors() {
             className="
               grid gap-x-20 gap-y-32 justify-items-center
               [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
-              max-w-[1200px]
+              max-w-[1200px] mx-auto
             "
           >
             {visibleMentors.map((mentor) => (
