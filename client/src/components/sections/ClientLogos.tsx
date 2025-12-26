@@ -5,6 +5,8 @@ const logos = [
   "/logos/xibotix_logo.jpg",
   "/logos/layoverindia_logo.jpg",
   "/logos/kwikcut_company_logo.jpg",
+  "/logos/mercedes.jpg",
+  "/logos/shopify.jpg",
 ];
 
 export function ClientLogos() {
