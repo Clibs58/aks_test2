@@ -25,7 +25,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="pt-[25px] pb-32 relative overflow-hidden">
+    <section id ="processes" className="pt-[25px] pb-32 relative overflow-hidden">
       <div className="container px-6 mx-auto">
 
         {/* Heading */}
