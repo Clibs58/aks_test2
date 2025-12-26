@@ -28,13 +28,12 @@ export function ClientLogos() {
       <div className="pointer-events-none absolute inset-y-0 left-0 w-52 bg-gradient-to-r from-black to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-52 bg-gradient-to-l from-black to-transparent z-10" />
 
-      {/* Marquee Wrapper */}
       <div className="overflow-hidden whitespace-nowrap">
         <motion.div
           className="flex items-center gap-20 w-max"
-          animate={{ x: ["0%", "-33.333%"] }} // move 1/3 of total width = seamless
+          animate={{ x: ["-33.333%", "0%"] }} // ⬅️ rightward movement
           transition={{
-            duration: 20, // slower = smoother and no visible reset
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
           }}
