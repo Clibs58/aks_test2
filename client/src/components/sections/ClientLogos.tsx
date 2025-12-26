@@ -31,7 +31,7 @@ export function ClientLogos() {
       <div className="overflow-hidden whitespace-nowrap">
         <motion.div
           className="flex items-center gap-20 w-max"
-          animate={{ x: ["-33.333%", "0%"] }} // ⬅️ rightward movement
+          animate={{ x: ["-33.333%", "0%"] }}
           transition={{
             duration: 20,
             repeat: Infinity,
@@ -46,7 +46,7 @@ export function ClientLogos() {
               <img
                 src={src}
                 alt="Client logo"
-                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-20 md:h-28 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}
