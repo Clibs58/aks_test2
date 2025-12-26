@@ -5,7 +5,7 @@ const logos = [
   "/logos/xibotix_logo.jpg",
   "/logos/layoverindia_logo.jpg",
   "/logos/kwikcut_company_logo.jpg",
-  "/logos/guardify_logo.png",
+  "/logos/guardifyx_logo.jpg",
   "/logos/shopify.jpg",
 ];
 
