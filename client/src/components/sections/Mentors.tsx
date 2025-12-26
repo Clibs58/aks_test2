@@ -54,10 +54,10 @@ const mentors = [
   },
   {
     id: "07",
-    name: "New Mentor A",
-    role: "Something",
-    image: "/mentors/placeholder.jpg",
-    profile: "#",
+    name: "Nikhil Raizada",
+    role: "Founder @ Raizzify",
+    image: "/mentors/nikhil_raiziffy.jpg",
+    profile: "https://www.linkedin.com/in/nikhil-raizada-651730161/",
   },
   {
     id: "08",
