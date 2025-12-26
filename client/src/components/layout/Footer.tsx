@@ -6,8 +6,6 @@ export function Footer() {
     >
       <div className="container px-6 mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
-          
-          {/* LOGO + DESCRIPTION */}
           <div className="col-span-2">
             <img
               src="/logo.png"
@@ -20,43 +18,61 @@ export function Footer() {
             </p>
           </div>
 
-          {/* SITEMAP */}
           <div>
             <h4 className="text-white font-semibold mb-4">Sitemap</h4>
             <ul className="space-y-2">
-              {["Process", "About"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`} // → #processes, #about
-                    className="text-gray-500 hover:text-white transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#process"
+                  className="text-gray-500 hover:text-white transition-colors"
+                >
+                  Process
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="text-gray-500 hover:text-white transition-colors"
+                >
+                  About
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* SOCIALS */}
           <div>
             <h4 className="text-white font-semibold mb-4">Socials</h4>
             <ul className="space-y-2">
-              {["Twitter", "LinkedIn", "Instagram"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-gray-500 hover:text-white transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-white transition-colors"
+                >
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/aksproductmanagement/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 hover:text-white transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-white transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
             </ul>
           </div>
-
         </div>
 
-        {/* FOOTER BOTTOM */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-sm text-gray-600">
           <p>&copy; {new Date().getFullYear()} AKS. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
