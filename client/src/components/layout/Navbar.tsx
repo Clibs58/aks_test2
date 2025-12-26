@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -101,17 +103,20 @@ export function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  /* -------- Smooth scroll -------- */
+  /* -------- Smooth scroll (fixed double-tap) -------- */
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
 
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-
-    setMobileOpen(false);
+    // If mobile menu is open: close first, then scroll after animation
+    if (mobileOpen) {
+      setMobileOpen(false);
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300); // match menu animation duration
+    } else {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
