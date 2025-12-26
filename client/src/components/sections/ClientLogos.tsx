@@ -2,9 +2,9 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const logos = [
-  "/logos/ey.jpg",
-  "/logos/ford.jpg",
-  "/logos/infosys.jpg",
+  "client/public/logos/kwikcut_company_logo.jpg",
+  "/logos/xibotix_logo.jpg",
+  "/logos/layoverindia_logo.jpg",
   "/logos/mercadolibre.jpg",
   "/logos/mercedes.jpg",
   "/logos/shopify.jpg",
