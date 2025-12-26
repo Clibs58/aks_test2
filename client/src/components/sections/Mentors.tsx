@@ -6,6 +6,7 @@ import {
   useMotionTemplate,
   animate,
   AnimatePresence,
+  useAnimation,
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
@@ -62,6 +63,26 @@ export function Mentors() {
   const ambientX = useMotionValue(50);
   const ambientY = useMotionValue(50);
 
+  /* ===== marquee controls ===== */
+  const marqueeControls = useAnimation();
+  let resumeTimer: NodeJS.Timeout | null = null;
+
+  const startMarquee = () => {
+    marqueeControls.start({
+      x: ["0%", "-50%"],
+      transition: {
+        duration: 18,   // faster marquee
+        ease: "linear",
+        repeat: Infinity,
+      },
+    });
+  };
+
+  useEffect(() => {
+    startMarquee(); // run once on mount
+    return () => resumeTimer && clearTimeout(resumeTimer);
+  }, []);
+
   useEffect(() => {
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -82,7 +103,7 @@ export function Mentors() {
     radial-gradient(800px circle at ${ambientX}% ${ambientY}%, rgba(11,31,51,0.25), transparent 70%)
   `;
 
-  /* ===== rotating batches ONLY when not showing all ===== */
+  /* ===== rotating batches for desktop ===== */
   const BATCH_SIZE = 6;
   const INTERVAL   = 8000;
   const [index, setIndex] = useState(0);
@@ -112,7 +133,6 @@ export function Mentors() {
           </p>
         </div>
 
-        {/* BUTTON ONLY ON DESKTOP */}
         <button
           onClick={() => setShowAll(prev => !prev)}
           className="hidden md:flex text-white hover:text-gray-300 transition-colors items-center gap-2"
@@ -122,7 +142,7 @@ export function Mentors() {
         </button>
       </div>
 
-      {/* ===== MOBILE: marquee + swipe + auto resume ===== */}
+      {/* ===== MOBILE marquee + swipe + auto resume ===== */}
       {!showAll && (
         <div className="md:hidden relative mb-16 px-6 overflow-hidden">
           <motion.div
@@ -130,21 +150,16 @@ export function Mentors() {
             drag="x"
             dragConstraints={{ left: -((mentors.length - 1) * 260), right: 0 }}
             dragElastic={0.15}
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              duration: 18,   // <-- faster speed
-              ease: "linear",
-              repeat: Infinity,
+            animate={marqueeControls}
+            onDragStart={() => {
+              marqueeControls.stop();
+              if (resumeTimer) clearTimeout(resumeTimer);
             }}
-            onDragStart={(e) => {
-              e.target.style.animationPlayState = "paused";
-            }}
-            onDragEnd={(e) => {
-              const el = e.target;
-              el.style.animationPlayState = "paused";
-              setTimeout(() => {
-                el.style.animationPlayState = "running";
-              }, 3000); // resume after ~3 sec
+            onDragEnd={() => {
+              if (resumeTimer) clearTimeout(resumeTimer);
+              resumeTimer = setTimeout(() => {
+                startMarquee();
+              }, 3000); // ~3 sec resume
             }}
           >
             {[...mentors, ...mentors].map((mentor, idx) => (
