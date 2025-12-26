@@ -89,10 +89,10 @@ const mentors = [
   },
   {
     id: "12",
-    name: "New Mentor F",
-    role: "Something",
-    image: "/mentors/placeholder.jpg",
-    profile: "#",
+    name: "Havish Karanam",
+    role: "Founder & CEO @ XIBOTIX Pvt. Ltd. | Ex-CTO @ Awlam Innovations Pvt. Ltd.",
+    image: "/mentors/havish.jpg",
+    profile: "https://www.linkedin.com/in/havish-karanam-91590a1b9/",
   },
   {
     id: "13",
