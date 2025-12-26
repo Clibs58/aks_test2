@@ -52,6 +52,7 @@ const mentors = [
     image: "/mentors/lalit.jpg",
     profile: "https://www.linkedin.com/in/lalit-mohan",
   },
+  // ⬇ Add rest of your mentors here
   {
     id: "07",
     name: "New Mentor A",
@@ -104,7 +105,7 @@ const mentors = [
 ];
 
 export function Mentors() {
-  /* ================= CURSOR VALUES (background effects) ================= */
+  /* ================= CURSOR VALUES ================= */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -141,10 +142,9 @@ export function Mentors() {
     radial-gradient(800px circle at ${ambientX}% ${ambientY}%, rgba(11,31,51,0.25), transparent 70%)
   `;
 
-  /* ================== CYCLING MENTORS (6 AT A TIME) ==================== */
+  /* ============== CYCLING BATCHES OF 6 ============== */
   const BATCH_SIZE = 6;
   const INTERVAL = 8000;
-
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -165,7 +165,8 @@ export function Mentors() {
 
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
-      {/* ================= BACKGROUND LAYERS ================= */}
+
+      {/* ================= BACKGROUND ================= */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden md:block"
@@ -177,20 +178,10 @@ export function Mentors() {
         style={{ background: spotlight }}
       />
 
-      {/* ================= HEADER ================= */}
-      <div className="relative z-10 container px-6 mx-auto mb-20 max-w-2xl">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Our Mentors
-        </h2>
-        <p className="text-gray-400 text-lg">
-          Guidance from industry leaders shaping the next generation of builders.
-        </p>
-      </div>
-
       {/* ================= MOBILE MARQUEE ================= */}
-      <div className="md:hidden relative">
+      <div className="md:hidden relative mb-16 px-6">
         <motion.div
-          className="flex gap-6 w-max px-6"
+          className="flex gap-6 w-max"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 28, ease: "linear", repeat: Infinity }}
         >
@@ -217,47 +208,61 @@ export function Mentors() {
         </motion.div>
       </div>
 
-      {/* ================= DESKTOP CYCLING GRID ================= */}
-      <div className="hidden md:block container px-6 mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="
-              grid gap-x-20 gap-y-32 justify-items-center
-              [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
-              max-w-[1200px] mx-auto
-            "
-          >
-            {visibleMentors.map((mentor) => (
-              <motion.div
-                key={mentor.id}
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.25 }}
-                className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8"
-              >
-                <img
-                  src={mentor.image}
-                  className="mb-6 h-28 w-28 rounded-full object-cover border border-white/20"
-                />
-                <h3 className="text-2xl font-semibold text-white mb-2">
-                  {mentor.name}
-                </h3>
-                <p className="text-gray-400 mb-6 text-center">{mentor.role}</p>
-                <a
-                  href={mentor.profile}
-                  target="_blank"
-                  className="mt-auto mb-8 inline-flex rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm text-white hover:bg-[#0B1F33]"
+      {/* ================= DESKTOP: SIDEBAR + CYCLING CARDS ================= */}
+      <div className="hidden md:flex container px-6 mx-auto gap-20">
+
+        {/* LEFT SIDEBAR TITLE */}
+        <div className="max-w-sm sticky top-40 h-fit">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Our Mentors
+          </h2>
+          <p className="text-gray-400 text-lg leading-relaxed">
+            Guidance from industry leaders shaping the next generation of builders.
+          </p>
+        </div>
+
+        {/* RIGHT CYCLING GRID */}
+        <div className="flex-1">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+              className="
+                grid gap-x-20 gap-y-32 justify-items-center
+                [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
+                max-w-[900px] ml-auto
+              "
+            >
+              {visibleMentors.map((mentor) => (
+                <motion.div
+                  key={mentor.id}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.25 }}
+                  className="h-[400px] w-full max-w-[320px] rounded-xl bg-white/5 border border-white/10 flex flex-col items-center pt-8 px-8"
                 >
-                  View Profile →
-                </a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                  <img
+                    src={mentor.image}
+                    className="mb-6 h-28 w-28 rounded-full object-cover border border-white/20"
+                  />
+                  <h3 className="text-2xl font-semibold text-white mb-2">
+                    {mentor.name}
+                  </h3>
+                  <p className="text-gray-400 mb-6 text-center">{mentor.role}</p>
+                  <a
+                    href={mentor.profile}
+                    target="_blank"
+                    className="mt-auto mb-8 inline-flex rounded-md border border-white/20 bg-white/5 px-6 py-2 text-sm text-white hover:bg-[#0B1F33]"
+                  >
+                    View Profile →
+                  </a>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
