@@ -6,7 +6,6 @@ const logos = [
   "/logos/layoverindia_logo.jpg",
   "/logos/kwikcut_company_logo.jpg",
   "/logos/guardifyx_logo.jpg",
-  "/logos/shopify.jpg",
 ];
 
 export function ClientLogos() {
