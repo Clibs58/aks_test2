@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 // word-by-word animation
@@ -17,9 +17,23 @@ const wordVariants = {
 export function Hero() {
   const heroBg = "/hero_bg.png";
 
-  /* ---------- Parallax Background Motion ---------- */
+  /* ---------- Enable parallax only on desktop ---------- */
+  const [enableParallax, setEnableParallax] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)"); // md breakpoint
+    setEnableParallax(mq.matches);
+
+    const listener = (e: MediaQueryListEvent) => setEnableParallax(e.matches);
+    mq.addEventListener("change", listener);
+
+    return () => mq.removeEventListener("change", listener);
+  }, []);
+
+  /* ---------- Parallax Background Motion (desktop only) ---------- */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
   const springX = useSpring(mouseX, { stiffness: 50, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 30 });
 
@@ -27,13 +41,16 @@ export function Hero() {
   const bgY = useTransform(springY, [0, typeof window !== "undefined" ? window.innerHeight : 0], [-12, 12]);
 
   useEffect(() => {
+    if (!enableParallax) return;
+
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
+
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, [mouseX, mouseY]);
+  }, [enableParallax, mouseX, mouseY]);
 
   /* ---------- Split words but keep same formatting ---------- */
   const line1 = "Turning Student".split(" ");
@@ -46,7 +63,8 @@ export function Hero() {
     >
       {/* Background */}
       <motion.div
-        style={{ x: bgX, y: bgY }}
+        /* Only apply parallax if desktop */
+        style={enableParallax ? { x: bgX, y: bgY } : {}}
         className="absolute inset-0 z-0"
       >
         <img
@@ -60,7 +78,6 @@ export function Hero() {
 
       {/* CONTENT */}
       <div className="container relative z-10 px-6 text-center max-w-5xl mx-auto">
-        
         {/* ======= HEADING (word by word) ======= */}
         <motion.h1
           initial="hidden"
@@ -124,7 +141,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator — subtle pulse */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
