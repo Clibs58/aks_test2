@@ -136,7 +136,7 @@ export function Navbar() {
           <img
             src="/logo.png"
             alt="Logo"
-            className="h-30 w-auto cursor-pointer"
+            className="h-20 w-auto cursor-pointer"
             onClick={() => scrollToSection("home")}
           />
         </div>
