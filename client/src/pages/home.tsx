@@ -22,8 +22,8 @@ export default function Home() {
         <CaseStudies />
         <Portfolio /> {/* ✅ ClientLogos + Process */}
         <Mentors />
-        <JoinUs />
         <Contact />
+        <JoinUs />
       </main>
       <Footer />
     </div>
