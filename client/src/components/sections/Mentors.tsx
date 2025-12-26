@@ -122,19 +122,35 @@ export function Mentors() {
         </button>
       </div>
 
-      {/* ===== MOBILE SWIPE ===== */}
+      {/* ===== MOBILE: marquee + swipe + auto resume ===== */}
       {!showAll && (
         <div className="md:hidden relative mb-16 px-6 overflow-hidden">
           <motion.div
-            className="flex gap-6"
+            className="flex gap-6 cursor-grab active:cursor-grabbing"
             drag="x"
             dragConstraints={{ left: -((mentors.length - 1) * 260), right: 0 }}
-            dragElastic={0.2}
+            dragElastic={0.15}
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 25,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            onDragStart={(e) => {
+              e.target.style.animationPlayState = "paused";
+            }}
+            onDragEnd={(e) => {
+              const el = e.target;
+              el.style.animationPlayState = "paused";
+              setTimeout(() => {
+                el.style.animationPlayState = "running";
+              }, 3000);
+            }}
           >
-            {mentors.map((mentor) => (
+            {[...mentors, ...mentors].map((mentor, idx) => (
               <div
-                key={mentor.id}
-                className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0 cursor-grab active:cursor-grabbing"
+                key={idx}
+                className="w-64 rounded-xl bg-white/5 border border-white/10 px-6 py-6 text-center flex-shrink-0"
               >
                 <img src={mentor.image} className="mx-auto mb-4 h-20 w-20 rounded-full object-cover border border-white/20" />
                 <h3 className="text-lg font-semibold text-white">{mentor.name}</h3>
