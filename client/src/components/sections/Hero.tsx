@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   // Public assets are referenced like this:
-  const heroBg = "/dark_metallic_blue_abstract_hero_background.png";
+  const heroBg = "/public/dark_metallic_blue_abstract_hero_background.png";
 
   return (
     <section
