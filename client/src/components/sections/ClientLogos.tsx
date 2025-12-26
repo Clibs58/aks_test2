@@ -1,5 +1,4 @@
-import { motion, useMotionValue, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const logos = [
   "/logos/TeamLambda_logo.jpg",
@@ -11,52 +10,44 @@ const logos = [
 ];
 
 export function ClientLogos() {
-  const x = useMotionValue(0);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const halfWidth = el.scrollWidth / 2;
-
-    const controls = animate(x, [-halfWidth, 0], {
-      ease: "linear",
-      duration: 10,
-      repeat: Infinity,
-    });
-
-    return controls.stop;
-  }, [x]);
+  // duplicate 3× for seamless infinite loop
+  const marquee = [...logos, ...logos, ...logos];
 
   return (
-    <section id="portfolio" className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
+    <section
+      id="portfolio"
+      className="relative py-24 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden"
+    >
       <div className="container px-6 mx-auto">
-        {/* ✅ KEPT EXACTLY AS REQUESTED */}
         <p className="text-center text-sm text-gray-500 uppercase tracking-widest mb-12">
           Trusted by Industry Leaders
         </p>
       </div>
 
       {/* Fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-52 bg-gradient-to-r from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-52 bg-gradient-to-l from-black to-transparent z-10" />
 
-      <div className="overflow-hidden">
+      {/* Marquee Wrapper */}
+      <div className="overflow-hidden whitespace-nowrap">
         <motion.div
-          ref={containerRef}
-          style={{ x }}
           className="flex items-center gap-20 w-max"
+          animate={{ x: ["0%", "-33.333%"] }} // move 1/3 of total width = seamless
+          transition={{
+            duration: 20, // slower = smoother and no visible reset
+            repeat: Infinity,
+            ease: "linear",
+          }}
         >
-          {[...logos, ...logos].map((src, i) => (
+          {marquee.map((src, i) => (
             <div
               key={i}
-              className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300"
+              className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300"
             >
               <img
                 src={src}
                 alt="Client logo"
-                className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}
