@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
@@ -29,10 +31,11 @@ const faqs = [
 ];
 
 export function Contact() {
-  const [open, setOpen] = useState<number | null>(0);
+  /** <-- FIXED: initially closed */
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-32 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
 
@@ -53,7 +56,7 @@ export function Contact() {
             </h2>
 
             <p className="text-xl text-gray-400 max-w-md mt-8">
-              Ready to transform your digital presence?  
+              Ready to transform your digital presence?
               We’re here to help you succeed.
             </p>
           </motion.div>
