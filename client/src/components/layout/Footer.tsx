@@ -61,28 +61,13 @@ export function Footer() {
                   LinkedIn
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-white transition-colors"
-                >
-                  Instagram
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-sm text-gray-600">
           <p>&copy; {new Date().getFullYear()} AKS. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-400">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-gray-400">
-              Terms of Service
-            </a>
-          </div>
+          
         </div>
       </div>
     </footer>
