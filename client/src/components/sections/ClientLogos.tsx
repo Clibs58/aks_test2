@@ -9,8 +9,6 @@ const logos = [
 ];
 
 export function ClientLogos() {
-  const marquee = [...logos, ...logos, ...logos];
-
   return (
     <section
       id="portfolio"
@@ -22,33 +20,16 @@ export function ClientLogos() {
         </p>
       </div>
 
-      {/* Fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-52 bg-gradient-to-r from-black to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-52 bg-gradient-to-l from-black to-transparent z-10" />
-
-      <div className="overflow-hidden whitespace-nowrap">
-        <motion.div
-          className="flex items-center gap-20 w-max"
-          animate={{ x: ["-33.333%", "0%"] }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          {marquee.map((src, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center"
-            >
-              <img
-                src={src}
-                alt="Client logo"
-                className="h-20 md:h-28 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </motion.div>
+      {/* simple horizontal layout */}
+      <div className="flex items-center justify-center gap-12 flex-wrap px-6">
+        {logos.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt="Client logo"
+            className="h-20 md:h-28 w-auto object-contain"
+          />
+        ))}
       </div>
     </section>
   );
