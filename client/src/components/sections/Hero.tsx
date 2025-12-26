@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroBg from "/home/project/attached_assets/generated_images/dark_metallic_blue_abstract_hero_background.png";
 
 export function Hero() {
+  // Public assets are referenced like this:
+  const heroBg = "/hero_bg.png";
+
   return (
-    <section id="home" className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20 pb-32">
+    <section
+      id="home"
+      className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20 pb-32"
+    >
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
@@ -13,6 +18,7 @@ export function Hero() {
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+
         {/* Noise overlay */}
         <div className="absolute inset-0 noise-bg opacity-20 mix-blend-overlay pointer-events-none" />
       </div>
@@ -24,7 +30,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-5xl md:text-5xl lg:text-8xl font-bold font-heading leading-[1.1] tracking-tight mb-6"
         >
-        Turning Student <br />
+          Turning Student <br />
           <span className="text-gradient-blue">Ideas into Real Products</span>
         </motion.h1>
 
@@ -37,32 +43,31 @@ export function Hero() {
           A product ecosystem built for early-stage founders.
         </motion.p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <Button
+            size="lg"
+            className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white rounded-lg shadow-[0_0_20px_rgba(27,38,59,0.4)] hover:shadow-[0_0_30px_rgba(65,90,119,0.5)] transition-all duration-300"
           >
-            <Button 
-              size="lg"
-              className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white rounded-lg shadow-[0_0_20px_rgba(27,38,59,0.4)] hover:shadow-[0_0_30px_rgba(65,90,119,0.5)] transition-all duration-300"
-            >
-              Let's Build
-            </Button>
-          </motion.div>
-
-          
-        </div>
+            Let's Build
+          </Button>
+        </motion.div>
       </div>
-      
+
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
+        <span className="text-xs text-gray-500 uppercase tracking-widest">
+          Scroll
+        </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-accent/0 via-accent to-accent/0" />
       </motion.div>
     </section>
