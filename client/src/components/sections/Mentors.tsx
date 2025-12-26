@@ -104,7 +104,7 @@ const mentors = [
 ];
 
 export function Mentors() {
-  /* ================= CURSOR VALUES (background effects) ================= */
+  /* ================= CURSOR VALUES ================= */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -141,10 +141,9 @@ export function Mentors() {
     radial-gradient(800px circle at ${ambientX}% ${ambientY}%, rgba(11,31,51,0.25), transparent 70%)
   `;
 
-  /* ================== CYCLING MENTORS (6 AT A TIME) ==================== */
+  /* ============== CYCLING BATCHES OF 6 ============== */
   const BATCH_SIZE = 6;
   const INTERVAL = 8000;
-
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -165,7 +164,8 @@ export function Mentors() {
 
   return (
     <section id="mentors" className="relative py-32 bg-black overflow-hidden">
-      {/* ================= BACKGROUND LAYERS ================= */}
+
+      {/* ================= BACKGROUND ================= */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden md:block"
@@ -177,20 +177,20 @@ export function Mentors() {
         style={{ background: spotlight }}
       />
 
-      {/* ================= HEADER ================= */}
-      <div className="relative z-10 container px-6 mx-auto mb-20 max-w-2xl">
+      {/* ================= HEADING - LEFT ALIGNED ================= */}
+      <div className="relative z-10 container px-6 mx-auto mb-20">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
           Our Mentors
         </h2>
-        <p className="text-gray-400 text-lg">
+        <p className="text-gray-400 text-lg max-w-xl">
           Guidance from industry leaders shaping the next generation of builders.
         </p>
       </div>
 
       {/* ================= MOBILE MARQUEE ================= */}
-      <div className="md:hidden relative">
+      <div className="md:hidden relative mb-16 px-6">
         <motion.div
-          className="flex gap-6 w-max px-6"
+          className="flex gap-6 w-max"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 28, ease: "linear", repeat: Infinity }}
         >
@@ -229,7 +229,7 @@ export function Mentors() {
             className="
               grid gap-x-20 gap-y-32 justify-items-center
               [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]
-              max-w-[1200px] mx-auto
+              max-w-[1200px]
             "
           >
             {visibleMentors.map((mentor) => (
