@@ -56,7 +56,7 @@ const MentorGrid = ({ list }: { list: typeof mentors }) => (
 export function Mentors() {
   const [showAll, setShowAll] = useState(false);
 
-  /* ===== spotlight + ambient background ===== */
+  /* ===== spotlight + ambient ===== */
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const ambientX = useMotionValue(50);
@@ -107,19 +107,22 @@ export function Mentors() {
       <div className="relative z-10 container px-6 mx-auto mb-20 flex items-center justify-between">
         <div>
           <h2 className="text-4xl md:text-5xl font-bold mb-3 text-white">Our Mentors</h2>
-          <p className="text-gray-400 text-lg max-w-xl">Guidance from industry leaders shaping the next generation of builders.</p>
+          <p className="text-gray-400 text-lg max-w-xl">
+            Guidance from industry leaders shaping the next generation of builders.
+          </p>
         </div>
 
+        {/* BUTTON ONLY ON DESKTOP */}
         <button
           onClick={() => setShowAll(prev => !prev)}
-          className="text-white hover:text-gray-300 transition-colors flex items-center gap-2 mt-6 md:mt-0"
+          className="hidden md:flex text-white hover:text-gray-300 transition-colors items-center gap-2"
         >
           {showAll ? "Show Less" : "View All"}
           <ChevronRight className={`transition-transform ${showAll ? "rotate-90" : ""}`} />
         </button>
       </div>
 
-      {/* ===== MOBILE marquee unchanged ===== */}
+      {/* ===== MOBILE marquee ===== */}
       {!showAll && (
         <div className="md:hidden relative mb-16 px-6">
           <motion.div className="flex gap-6 w-max" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 28, repeat: Infinity, ease: "linear" }}>
@@ -147,12 +150,7 @@ export function Mentors() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.6 }}
-              className="
-                grid gap-16
-                grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-                justify-items-center
-                max-w-[1200px] mx-auto
-              "
+              className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center max-w-[1200px] mx-auto"
             >
               {visibleMentors.map((mentor) => (
                 <motion.div
