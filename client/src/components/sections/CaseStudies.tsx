@@ -15,7 +15,7 @@ export function CaseStudies() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">About AKS</h2>
           <p className="text-gray-400 text-lg">
-            Product leadership. Founder-first. Built for real impact.
+            Product leadership • Founder-first • Built for real impact.
           </p>
         </motion.div>
 
@@ -39,15 +39,12 @@ export function CaseStudies() {
                 group-hover:shadow-[0_0_18px_rgba(65,90,119,0.9)]
               " />
 
-              <span className="text-accent text-sm font-medium tracking-wider uppercase mb-4">
-                Purpose
-              </span>
 
               {/* Heading with underline */}
               <h3 className="text-3xl md:text-4xl font-bold mb-6">
                 <span className="relative inline-block">
                   <span className="relative z-10">
-                    Building Products That Matter
+                    Accelerating Product Success.
                   </span>
 
                   {/* Underline */}
