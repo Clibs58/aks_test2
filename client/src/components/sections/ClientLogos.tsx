@@ -18,18 +18,23 @@ export function ClientLogos() {
         <p className="text-center text-sm text-gray-300 uppercase tracking-widest mb-12">
           <span className="font-semibold">Our Clients:</span> Student-Led Startups
         </p>
-      </div>
 
-      {/* simple horizontal layout */}
-      <div className="flex items-center justify-center gap-12 flex-wrap px-6">
-        {logos.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt="Client logo"
-            className="h-20 md:h-28 w-auto object-contain"
-          />
-        ))}
+        {/* Wider grid — spreads logos across the full container */}
+        <div className="
+          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5
+          gap-y-10 gap-x-16
+          justify-items-center
+          max-w-6xl mx-auto
+        ">
+          {logos.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt="Client logo"
+              className="h-20 md:h-28 w-auto object-contain"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
