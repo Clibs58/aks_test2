@@ -5,7 +5,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-2">
             <img 
-              src="/aks_logo_website.svg" 
+              src="/logo.png" 
               alt="Logo" 
               className="h-32 w-auto mb-4"
             />
