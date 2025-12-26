@@ -2,7 +2,7 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const logos = [
-  "client/public/logos/kwikcut_company_logo.jpg",
+  "/logos/TeamLambda_logo.jpg",
   "/logos/xibotix_logo.jpg",
   "/logos/layoverindia_logo.jpg",
   "/logos/mercadolibre.jpg",
