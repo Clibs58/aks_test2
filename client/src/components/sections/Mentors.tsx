@@ -96,10 +96,10 @@ const mentors = [
   },
   {
     id: "13",
-    name: "New Mentor G",
-    role: "Something",
-    image: "/mentors/placeholder.jpg",
-    profile: "#",
+    name: "Ajith Sunny",
+    role: "Co-Founder @ MetaShot | CMO @ Craste",
+    image: "/mentors/ajith.jpg",
+    profile: "https://www.linkedin.com/in/ajith-sunny-39b12456/",
   },
 ];
 
