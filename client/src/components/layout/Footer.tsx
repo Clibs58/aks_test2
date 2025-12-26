@@ -24,7 +24,7 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Sitemap</h4>
             <ul className="space-y-2">
-              {["Processes", "About"].map((item) => (
+              {["Process", "About"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`} // → #processes, #about
