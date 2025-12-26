@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroBg from "/home/project/attached_assets/generated_images/dark_metallic_blue_abstract_hero_background.png";
 
 export function Hero() {
+  // Public assets are referenced like this:
+  const heroBg = "/hero_bg.png";
+
   return (
     <section
       id="home"
@@ -15,7 +17,6 @@ export function Hero() {
           alt="Background"
           className="w-full h-full object-cover opacity-60"
         />
-
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
 
         {/* Noise overlay */}
@@ -30,9 +31,7 @@ export function Hero() {
           className="text-5xl md:text-5xl lg:text-8xl font-bold font-heading leading-[1.1] tracking-tight mb-6"
         >
           Turning Student <br />
-          <span className="text-gradient-blue">
-            Ideas into Real Products
-          </span>
+          <span className="text-gradient-blue">Ideas into Real Products</span>
         </motion.h1>
 
         <motion.p
@@ -44,20 +43,19 @@ export function Hero() {
           A product ecosystem built for early-stage founders.
         </motion.p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <Button
+            size="lg"
+            className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white rounded-lg shadow-[0_0_20px_rgba(27,38,59,0.4)] hover:shadow-[0_0_30px_rgba(65,90,119,0.5)] transition-all duration-300"
           >
-            <Button
-              size="lg"
-              className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-white rounded-lg shadow-[0_0_20px_rgba(27,38,59,0.4)] hover:shadow-[0_0_30px_rgba(65,90,119,0.5)] transition-all duration-300"
-            >
-              Let's Build
-            </Button>
-          </motion.div>
-        </div>
+            Let's Build
+          </Button>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
